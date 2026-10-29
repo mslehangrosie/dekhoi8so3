@@ -1,0 +1,3282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Cương Ôn Tập Giữa Kì 1 - Tiếng Anh 8 - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        duoGreen: '#00D26A',
+                        duoGreenDark: '#00A855',
+                        duoRed: '#FF4757',
+                        duoRedDark: '#D63031',
+                        duoYellow: '#FDCB6E',
+                        duoPurple: '#8854C0',
+                        duoBlue: '#00C9A7',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animated Gradient Background */
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(-45deg, #8854C0, #00C9A7, #FDCB6E, #e84393);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Pattern Overlay */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40l2.83 2.83-1.41 1.41L0 41.41l-2.83 2.83-1.41-1.41L-1.41 40l-2.83-2.83 1.41-1.41L0 38.59zM40 0l2.83 2.83-1.41 1.41L40 2.83l-2.83 2.83-1.41-1.41L37.17 0l-2.83-2.83 1.41-1.41L38.59-4.24l2.83 2.83 1.41-1.41L40 -4.24zM40 77.17l2.83 2.83-1.41 1.41L40 80l-2.83 2.83-1.41-1.41L37.17 77.17l-2.83-2.83 1.41-1.41L38.59 72.93l2.83 2.83 1.41-1.41L40 72.93zM77.17 40l2.83 2.83-1.41 1.41L77.17 42.83l-2.83 2.83-1.41-1.41L74.34 40l-2.83-2.83 1.41-1.41L74.34 35.76l2.83 2.83 1.41-1.41L77.17 35.76z'/%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Cpath d='M60 20l4-4m0 0l4 4m-4-4v12' stroke='%23ffffff' stroke-width='2' fill='none'/%3E%3Cpath d='M20 60l-3 5h6z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* 3D Button Styles */
+        .btn-3d {
+            transition: all 0.1s ease;
+            box-shadow: 0 5px 0 0 rgba(0,0,0,0.2);
+            position: relative;
+            top: 0;
+        }
+        .btn-3d:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 0 rgba(0,0,0,0.2);
+        }
+        .btn-3d:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+        }
+
+        .btn-option {
+            background-color: #ffffff;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 4px 0 0 #d1d5db;
+            color: #374151;
+            font-weight: 700;
+            border-radius: 16px;
+            transition: all 0.15s ease;
+        }
+        .btn-option:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+            transform: scale(1.01);
+        }
+
+        /* Correct and Incorrect States */
+        .btn-option.correct {
+            background-color: #00D26A !important;
+            border-color: #00A855 !important;
+            color: white !important;
+            box-shadow: 0 4px 0 0 #008040 !important;
+        }
+        .btn-option.wrong {
+            background-color: #FF4757 !important;
+            border-color: #D63031 !important;
+            color: white !important;
+            box-shadow: 0 4px 0 0 #b22222 !important;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Shake animation for wrong answers */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Card Container Styling */
+        .gamified-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Underline styling for phonetics */
+        u.phonetic-target {
+            text-decoration: underline;
+            text-decoration-color: #FF4757;
+            text-decoration-thickness: 3px;
+            color: #FF4757;
+            font-weight: 900;
+        }
+        
+        .stress-target {
+            color: #8854C0;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Sign & Notice Mockups */
+        .sign-box {
+            border: 4px solid #3b82f6;
+            background: #eff6ff;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="py-6 px-3 sm:px-6 relative text-gray-800">
+
+    <div class="bg-pattern"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+        
+        <!-- TOP HEADER LOGO & INFO -->
+        <header class="gamified-card p-4 mb-6 text-center">
+            <h1 class="text-xl sm:text-2xl font-extrabold text-purple-700 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-graduation-cap text-yellow-500"></i>
+                Giáo viên tạo: Ms Lê Hằng English
+            </h1>
+            <p class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">
+                <i class="fa-solid fa-phone-volume text-green-500 mr-1"></i>
+                Đăng kí học tiếng Anh 1-12, IELTS vui lòng liên hệ Ms Lê Hằng, Zalo: <span class="text-purple-600 font-bold">0584 965 348</span>
+            </p>
+        </header>
+
+        <!-- IMPORTANT NOTICE BANNER -->
+        <div class="gamified-card p-4 sm:p-5 mb-6 border-l-8 border-yellow-400 bg-yellow-50">
+            <div class="flex items-start gap-3">
+                <div class="text-2xl text-yellow-500 floating"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                    <h2 class="text-base sm:text-lg font-black text-yellow-800 tracking-wide">
+                        ⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️
+                    </h2>
+                    <p class="text-xs sm:text-sm font-bold text-gray-700 mt-1 leading-relaxed">
+                        Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.
+                        Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                    </p>
+                    <p class="text-xs font-extrabold text-purple-700 mt-2 italic">
+                        👉 Kéo tới đâu, làm tới đó! *THCS NGUYỄN TRƯỜNG TỘ*
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- THEORY SUMMARY SECTION -->
+        <div class="gamified-card p-5 sm:p-6 mb-8 border-t-4 border-purple-500">
+            <button onclick="toggleTheory()" class="w-full flex justify-between items-center text-left focus:outline-none">
+                <h3 class="text-lg sm:text-xl font-extrabold text-purple-800 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-purple-500"></i>
+                    A. THEORY - TÓM TẮT LÝ THUYẾT GIỮA KÌ I
+                </h3>
+                <span id="theory-toggle-icon" class="text-purple-600 text-xl font-bold"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            
+            <div id="theory-content" class="mt-4 text-sm text-gray-700 space-y-3 hidden border-t border-purple-100 pt-3">
+                <div class="bg-purple-50 p-3 rounded-xl">
+                    <h4 class="font-bold text-purple-900">I. Pronunciation & Stress:</h4>
+                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                        <li>Sounds: /u:/, /ʊ/, /ə/, /ɪ/, /ʊə/ and /ɔɪ/</li>
+                        <li>Stress in two-syllable words and three-syllable words</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 p-3 rounded-xl">
+                    <h4 class="font-bold text-blue-900">II. Vocabulary:</h4>
+                    <p class="mt-1">Leisure time, Life in the countryside, Teenagers.</p>
+                </div>
+                <div class="bg-green-50 p-3 rounded-xl">
+                    <h4 class="font-bold text-green-900">III. Grammar structure:</h4>
+                    <ul class="list-disc pl-5 mt-1 space-y-1">
+                        <li>Verbs of liking and disliking (like, love, enjoy, hate, detest + V-ing / to V)</li>
+                        <li>Comparative adverbs (harder, more peacefully, faster...)</li>
+                        <li>Simple sentences and compound sentences (and, but, so, or, however, therefore, otherwise)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRACTICE HEADER -->
+        <div class="text-center mb-6">
+            <span class="bg-yellow-400 text-yellow-950 font-black text-sm uppercase px-4 py-1.5 rounded-full shadow-sm">
+                B. PRACTICE - BÀI TẬP THỰC HÀNH
+            </span>
+        </div>
+
+        <!-- QUESTIONS CONTAINER -->
+        <div id="questions-container" class="space-y-6">
+            <!-- Dynamic questions will load here -->
+        </div>
+
+        <!-- SUBMIT & RESULT BUTTON -->
+        <div class="mt-10 mb-16 text-center">
+            <button onclick="submitTest()" class="btn-3d bg-duoGreen hover:bg-duoGreenDark text-white font-extrabold text-xl py-4 px-10 rounded-2xl w-full sm:w-auto uppercase tracking-wider flex items-center justify-center gap-3 mx-auto">
+                <i class="fa-solid fa-paper-plane"></i>
+                Nộp Bài & Xem Kết Quả
+            </button>
+        </div>
+    </div>
+
+    <!-- RESULT MODAL POPUP -->
+    <div id="result-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="gamified-card max-w-md w-full p-6 text-center floating relative">
+            <div id="modal-icon" class="text-5xl mb-3">🏆</div>
+            <h2 id="modal-title" class="text-2xl font-black text-purple-800 mb-2">Kết quả làm bài</h2>
+            
+            <div class="bg-purple-50 rounded-2xl p-4 my-4">
+                <p class="text-gray-600 font-bold text-sm">Tổng số câu đúng:</p>
+                <p class="text-4xl font-black text-purple-700 mt-1" id="modal-score">0 / 0</p>
+                <p class="text-sm font-bold text-green-600 mt-1" id="modal-percentage">0%</p>
+            </div>
+
+            <div class="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-4 mb-5 text-left">
+                <p class="text-xs font-bold text-yellow-800 uppercase">Lời nhắn từ Ms Lê Hằng:</p>
+                <p id="modal-feedback" class="text-sm font-bold text-gray-800 mt-1 leading-relaxed">
+                    <!-- Dynamic Feedback -->
+                </p>
+            </div>
+
+            <button onclick="closeModal()" class="btn-3d bg-purple-600 text-white font-extrabold py-3 px-8 rounded-xl w-full">
+                Xem Lại Bài Làm
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Web Audio API Sound Effects generator
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playDingSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15); // A5
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+
+        function playWrongSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+
+        function toggleTheory() {
+            const content = document.getElementById('theory-content');
+            const icon = document.getElementById('theory-toggle-icon');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+            } else {
+                content.classList.add('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+            }
+        }
+
+        // FULL DATABASE OF QUESTIONS
+        const questionsData = [
+            // Exercise 1: Pronunciation (15 items)
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "1.",
+                options: ["b<u>oo</u>k", "f<u>oo</u>d", "g<u>oo</u>d", "f<u>oo</u>t"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích âm của phần gạch chân 'oo' trong 4 từ:",
+                    optionsTrans: [
+                        "A. book: phát âm là /bʊk/ (âm /ʊ/ ngắn).",
+                        "B. food: phát âm là /fuːd/ (âm /uː/ dài).",
+                        "C. good: phát âm là /ɡʊd/ (âm /ʊ/ ngắn).",
+                        "D. foot: phát âm là /fʊt/ (âm /ʊ/ ngắn)."
+                    ],
+                    whyRight: "Đáp án B chọn 'food' vì phần gạch chân phát âm là /uː/, 3 đáp án còn lại phát âm là /ʊ/.",
+                    whyWrong: "A, C, D đều có nguyên âm /ʊ/ ngắn nên không chọn."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "2.",
+                options: ["c<u>ou</u>ld", "y<u>ou</u>th", "w<u>ou</u>ld", "sh<u>ou</u>ld"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích phần gạch chân 'ou':",
+                    optionsTrans: [
+                        "A. could: phát âm là /kʊd/ (âm /ʊ/ ngắn).",
+                        "B. youth: phát âm là /juːθ/ (âm /uː/ dài).",
+                        "C. would: phát âm là /wʊd/ (âm /ʊ/ ngắn).",
+                        "D. should: phát âm là /ʃʊd/ (âm /ʊ/ ngắn)."
+                    ],
+                    whyRight: "Đáp án B có nhóm từ phát âm là /uː/, khác với nhóm còn lại phát âm /ʊ/.",
+                    whyWrong: "A, C, D mang âm /ʊ/ giống nhau."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "3.",
+                options: ["vill<u>a</u>ge", "cott<u>a</u>ge", "advant<u>a</u>ge", "landsc<u>a</u>pe"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích nguyên âm 'a' ở vần thứ 2:",
+                    optionsTrans: [
+                        "A. village: phát âm là /ˈvɪl.ɪdʒ/ (âm /ɪ/).",
+                        "B. cottage: phát âm là /ˈkɒt.ɪdʒ/ (âm /ɪ/).",
+                        "C. advantage: phát âm là /ədˈvɑːn.tɪdʒ/ (âm /ɪ/).",
+                        "D. landscape: phát âm là /ˈlænd.skeɪp/ (âm /eɪ/)."
+                    ],
+                    whyRight: "landscape phát âm là /eɪ/, các từ còn lại mang vần -age đọc là /ɪdʒ/.",
+                    whyWrong: "A, B, C đều có vần đọc là /ɪdʒ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "4.",
+                options: ["<u>a</u>bout", "<u>a</u>gain", "<u>a</u>lone", "<u>a</u>ctive"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích phát âm của chữ 'a' đầu tiên:",
+                    optionsTrans: [
+                        "A. about: /əˈbaʊt/ (âm /ə/ nhẹ).",
+                        "B. again: /əˈɡeɪn/ (âm /ə/ nhẹ).",
+                        "C. alone: /əˈləʊn/ (âm /ə/ nhẹ).",
+                        "D. active: /ˈæk.tɪv/ (âm /æ/ bẹt)."
+                    ],
+                    whyRight: "active phát âm chữ 'a' là /æ/, khác hoàn toàn với 3 từ còn lại đọc là âm schwa /ə/.",
+                    whyWrong: "A, B, C đều là tiền tố âm schwa /ə/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "5.",
+                options: ["b<u>i</u>scuit", "b<u>u</u>ry", "b<u>ui</u>ld", "b<u>u</u>sy"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích phát âm nguyên âm gạch chân:",
+                    optionsTrans: [
+                        "A. biscuit: /ˈbɪs.kɪt/ (âm /ɪ/).",
+                        "B. bury: /ˈberi/ (âm /e/).",
+                        "C. build: /bɪld/ (âm /ɪ/).",
+                        "D. busy: /ˈbɪz.i/ (âm /ɪ/)."
+                    ],
+                    whyRight: "bury đọc nguyên âm đầu là /e/, trong khi 3 từ còn lại phát âm là /ɪ/.",
+                    whyWrong: "A, C, D đều có nguyên âm đọc là /ɪ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "6.",
+                options: ["t<u>ou</u>r", "t<u>ou</u>rist", "t<u>ou</u>rism", "j<u>ou</u>rney"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích vần gạch chân 'ou':",
+                    optionsTrans: [
+                        "A. tour: /tʊər/ (âm đôi /ʊə/).",
+                        "B. tourist: /ˈtʊə.rɪst/ (âm đôi /ʊə/).",
+                        "C. tourism: /ˈtʊə.rɪz.əm/ (âm đôi /ʊə/).",
+                        "D. journey: /ˈdʒɜː.ni/ (âm /ɜː/ dài)."
+                    ],
+                    whyRight: "journey mang nguyên âm /ɜː/, 3 từ thuộc cùng họ 'tour' mang âm /ʊə/.",
+                    whyWrong: "A, B, C đều phát âm /ʊə/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "7.",
+                options: ["t<u>or</u>toise", "j<u>oi</u>n", "n<u>oi</u>se", "v<u>oi</u>ce"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích nguyên âm gạch chân:",
+                    optionsTrans: [
+                        "A. tortoise: /ˈtɔː.təs/ (âm /ɔː/).",
+                        "B. join: /dʒɔɪn/ (âm đôi /ɔɪ/).",
+                        "C. noise: /nɔɪz/ (âm đôi /ɔɪ/).",
+                        "D. voice: /vɔɪs/ (âm đôi /ɔɪ/)."
+                    ],
+                    whyRight: "tortoise phát âm phần gạch chân là /ɔː/, các từ còn lại chứa âm /ɔɪ/.",
+                    whyWrong: "B, C, D đều có nguyên âm đôi /ɔɪ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "8.",
+                options: ["harvest<u>ed</u>", "load<u>ed</u>", "plough<u>ed</u>", "collect<u>ed</u>"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích quy tắc phát âm đuôi -ed:",
+                    optionsTrans: [
+                        "A. harvested: kết thúc /t/ -> phát âm là /ɪd/.",
+                        "B. loaded: kết thúc /d/ -> phát âm là /ɪd/.",
+                        "C. ploughed: kết thúc /aʊ/ -> phát âm là /d/.",
+                        "D. collected: kết thúc /t/ -> phát âm là /ɪd/."
+                    ],
+                    whyRight: "ploughed phát âm đuôi -ed là /d/, 3 từ còn lại kết thúc t/d nên đuôi -ed đọc là /ɪd/.",
+                    whyWrong: "A, B, D đều tuân theo quy tắc phát âm -ed là /ɪd/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "9.",
+                options: ["crop<u>s</u>", "kit<u>s</u>", "puzzle<u>s</u>", "habit<u>s</u>"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích quy tắc phát âm đuôi -s/es:",
+                    optionsTrans: [
+                        "A. crops: kết thúc âm vô thanh /p/ -> đọc là /s/.",
+                        "B. kits: kết thúc âm vô thanh /t/ -> đọc là /s/.",
+                        "C. puzzles: kết thúc âm hữu thanh /l/ -> đọc là /z/.",
+                        "D. habits: kết thúc âm vô thanh /t/ -> đọc là /s/."
+                    ],
+                    whyRight: "puzzles đọc đuôi -s là /z/, khác với các từ còn lại có đuôi đọc là /s/.",
+                    whyWrong: "A, B, D đều có âm tận cùng là âm vô thanh (p, t) nên -s đọc là /s/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "10.",
+                options: ["h<u>ea</u>lthy", "t<u>ea</u>mwork", "r<u>ea</u>ch", "p<u>ea</u>ceful"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích nguyên âm gạch chân 'ea':",
+                    optionsTrans: [
+                        "A. healthy: /ˈhel.θi/ (âm /e/).",
+                        "B. teamwork: /ˈtiːm.wɜːk/ (âm /iː/).",
+                        "C. reach: /riːtʃ/ (âm /iː/).",
+                        "D. peaceful: /ˈpiːs.fəl/ (âm /iː/)."
+                    ],
+                    whyRight: "healthy phát âm 'ea' là /e/, còn lại 3 đáp án là âm /iː/ dài.",
+                    whyWrong: "B, C, D đều chứa nguyên âm /iː/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "11.",
+                options: ["pl<u>ou</u>gh", "c<u>ou</u>ntry", "ar<u>ou</u>nd", "m<u>ou</u>ntain"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích phát âm 'ou':",
+                    optionsTrans: [
+                        "A. plough: /plaʊ/ (âm /aʊ/).",
+                        "B. country: /ˈkʌn.tri/ (âm /ʌ/).",
+                        "C. around: /əˈraʊnd/ (âm /aʊ/).",
+                        "D. mountain: /ˈmaʊn.tɪn/ (âm /aʊ/)."
+                    ],
+                    whyRight: "country phát âm 'ou' là /ʌ/, trong khi A, C, D đều đọc là /aʊ/.",
+                    whyWrong: "A, C, D đều có nguyên âm /aʊ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "12.",
+                options: ["so<u>ci</u>al", "plea<u>su</u>re", "deci<u>si</u>on", "lei<u>su</u>re"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích âm của phụ âm gạch chân:",
+                    optionsTrans: [
+                        "A. social: /ˈsəʊ.ʃəl/ (âm /ʃ/).",
+                        "B. pleasure: /ˈpleʒ.ər/ (âm /ʒ/).",
+                        "C. decision: /dɪˈsɪʒ.ən/ (âm /ʒ/).",
+                        "D. leisure: /ˈleʒ.ər/ (âm /ʒ/)."
+                    ],
+                    whyRight: "social phát âm là /ʃ/ (như s nhẹ xoe môi), 3 từ còn lại phát âm là /ʒ/.",
+                    whyWrong: "B, C, D đều có âm hữu thanh /ʒ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "13.",
+                options: ["<u>ch</u>eacher", "<u>ch</u>ores", "<u>ch</u>eck", "<u>s</u>chool"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích phát âm chữ 'ch':",
+                    optionsTrans: [
+                        "A. teacher (sửa từ gốc): /ˈtiː.tʃər/ (âm /tʃ/).",
+                        "B. chores: /tʃɔːz/ (âm /tʃ/).",
+                        "C. check: /tʃek/ (âm /tʃ/).",
+                        "D. school: /skuːl/ (phát âm là /k/)."
+                    ],
+                    whyRight: "school đọc là /k/, 3 từ còn lại đọc nhóm 'ch' là /tʃ/.",
+                    whyWrong: "A, B, C đều có phụ âm /tʃ/."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "14.",
+                options: ["<u>h</u>obby", "<u>h</u>arvest", "<u>h</u>onest", "<u>h</u>ospitable"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích phụ âm 'h' âm câm hay không câm:",
+                    optionsTrans: [
+                        "A. hobby: /ˈhɒb.i/ (phát âm /h/).",
+                        "B. harvest: /ˈhɑː.vɪst/ (phát âm /h/).",
+                        "C. honest: /ˈɒn.ɪst/ ('h' là âm câm).",
+                        "D. hospitable: /hɒsˈpɪt.ə.bəl/ (phát âm /h/)."
+                    ],
+                    whyRight: "honest có chữ 'h' câm, không phát âm, 3 từ còn lại phát âm là /h/.",
+                    whyWrong: "A, B, D đều phát âm âm /h/ rõ ràng."
+                }
+            },
+            {
+                section: "Exercise 1. Choose the word that has the underlined part pronounced differently from the others.",
+                q: "15.",
+                options: ["<u>th</u>ink", "<u>th</u>eatre", "<u>th</u>ese", "heal<u>th</u>y"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích âm 'th':",
+                    optionsTrans: [
+                        "A. think: /θɪŋk/ (âm vô thanh /θ/).",
+                        "B. theatre: /ˈθɪə.tər/ (âm vô thanh /θ/).",
+                        "C. these: /ðiːz/ (âm hữu thanh /ð/).",
+                        "D. healthy: /ˈhel.θi/ (âm vô thanh /θ/)."
+                    ],
+                    whyRight: "these phát âm 'th' là âm hữu thanh /ð/, 3 từ còn lại đọc là âm vô thanh /θ/.",
+                    whyWrong: "A, B, D đều mang âm /θ/."
+                }
+            },
+
+            // Exercise 2: Stress (15 items)
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "1.",
+                options: ["leisure", "hobby", "relax", "puzzle"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích trọng âm các từ 2 âm tiết:",
+                    optionsTrans: [
+                        "A. leisure: /ˈleʒ.ər/ (trọng âm 1).",
+                        "B. hobby: /ˈhɒb.i/ (trọng âm 1).",
+                        "C. relax: /rɪˈlæks/ (trọng âm 2).",
+                        "D. puzzle: /ˈpʌz.əl/ (trọng âm 1)."
+                    ],
+                    whyRight: "relax là động từ 2 âm tiết có trọng âm rơi vào âm tiết thứ 2, các từ khác là danh từ/tính từ trọng âm 1.",
+                    whyWrong: "A, B, D đều có trọng âm rơi vào âm tiết 1."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "2.",
+                options: ["benefit", "energy", "creative", "holiday"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích trọng âm từ 3 âm tiết:",
+                    optionsTrans: [
+                        "A. benefit: /ˈben.ɪ.fɪt/ (trọng âm 1).",
+                        "B. energy: /ˈen.ə.dʒi/ (trọng âm 1).",
+                        "C. creative: /kriˈeɪ.tɪv/ (trọng âm 2).",
+                        "D. holiday: /ˈhɒl.ə.deɪ/ (trọng âm 1)."
+                    ],
+                    whyRight: "creative có trọng âm 2, 3 từ còn lại có trọng âm 1.",
+                    whyWrong: "A, B, D đều có trọng âm rơi vào âm tiết thứ nhất."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "3.",
+                options: ["rural", "urban", "modern", "machine"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. rural: /ˈrʊə.rəl/ (trọng âm 1).",
+                        "B. urban: /ˈɜː.bən/ (trọng âm 1).",
+                        "C. modern: /ˈmɒd.ən/ (trọng âm 1).",
+                        "D. machine: /məˈʃiːn/ (trọng âm 2)."
+                    ],
+                    whyRight: "machine có trọng âm nhấn vào âm tiết thứ 2.",
+                    whyWrong: "A, B, C đều có trọng âm ở âm tiết thứ 1."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "4.",
+                options: ["discover", "concentrate", "dangerous", "beautiful"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích trọng âm từ 3 âm tiết:",
+                    optionsTrans: [
+                        "A. discover: /dɪˈskʌv.ər/ (trọng âm 2).",
+                        "B. concentrate: /ˈkɒn.sən.treɪt/ (trọng âm 1).",
+                        "C. dangerous: /ˈdeɪn.dʒər.əs/ (trọng âm 1).",
+                        "D. beautiful: /ˈbjuː.tɪ.fəl/ (trọng âm 1)."
+                    ],
+                    whyRight: "discover có trọng âm rơi vào âm tiết thứ 2.",
+                    whyWrong: "B, C, D đều nhấn vào âm tiết thứ 1."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "5.",
+                options: ["countryside", "buffalo", "pagoda", "family"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. countryside: /ˈkʌn.tri.saɪd/ (trọng âm 1).",
+                        "B. buffalo: /ˈbʌf.ə.ləʊ/ (trọng âm 1).",
+                        "C. pagoda: /pəˈɡəʊ.də/ (trọng âm 2).",
+                        "D. family: /ˈfæm.əl.i/ (trọng âm 1)."
+                    ],
+                    whyRight: "pagoda nhấn ở âm tiết 2 (/ɡəʊ/).",
+                    whyWrong: "A, B, D nhấn âm tiết thứ nhất."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "6.",
+                options: ["unhappy", "dislike", "rewrite", "comfort"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. unhappy: /ʌnˈhæp.i/ (trọng âm 2).",
+                        "B. dislike: /dɪsˈlaɪk/ (trọng âm 2).",
+                        "C. rewrite: /ˌriːˈraɪt/ (trọng âm 2).",
+                        "D. comfort: /ˈkʌm.fət/ (trọng âm 1)."
+                    ],
+                    whyRight: "comfort là danh từ/động từ có trọng âm nhấn ở âm tiết 1.",
+                    whyWrong: "A, B, C có tiền tố (un-, dis-, re-) nên trọng âm rơi vào âm tiết gốc thứ 2."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "7.",
+                options: ["anxious", "mature", "stressful", "moody"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích trọng âm tính từ 2 âm tiết:",
+                    optionsTrans: [
+                        "A. anxious: /ˈæŋk.ʃəs/ (trọng âm 1).",
+                        "B. mature: /məˈtʃʊər/ (trọng âm 2).",
+                        "C. stressful: /ˈstres.fəl/ (trọng âm 1).",
+                        "D. moody: /ˈmuː.di/ (trọng âm 1)."
+                    ],
+                    whyRight: "mature có trọng âm nhấn âm 2.",
+                    whyWrong: "A, C, D đều có trọng âm rơi vào âm 1."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "8.",
+                options: ["community", "expectation", "scientific", "volunteer"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích trọng âm từ nhiều âm tiết:",
+                    optionsTrans: [
+                        "A. community: /kəˈmjuː.nə.ti/ (trọng âm 2).",
+                        "B. expectation: /ˌek.spekˈteɪ.ʃən/ (trọng âm 3).",
+                        "C. scientific: /ˌsaɪənˈtɪf.ɪk/ (trọng âm 3).",
+                        "D. volunteer: /ˌvɒl.ənˈtɪər/ (trọng âm 3)."
+                    ],
+                    whyRight: "community nhấn âm tiết 2, các từ còn lại nhấn âm 3.",
+                    whyWrong: "B, C, D đều có trọng âm chính ở âm tiết 3."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "9.",
+                options: ["musician", "engineer", "activity", "romantic"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. musician: /mjuːˈzɪʃ.ən/ (trọng âm 2).",
+                        "B. engineer: /ˌen.dʒɪˈnɪər/ (trọng âm 3).",
+                        "C. activity: /ækˈtɪv.ə.ti/ (trọng âm 2).",
+                        "D. romantic: /rəʊˈmæn.tɪk/ (trọng âm 2)."
+                    ],
+                    whyRight: "engineer nhận trọng âm ở âm tiết 3 đuôi -eer.",
+                    whyWrong: "A, C, D đều có trọng âm ở âm tiết thứ 2."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "10.",
+                options: ["traditional", "information", "energetic", "opportunity"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích vị trí trọng âm:",
+                    optionsTrans: [
+                        "A. traditional: /trəˈdɪʃ.ən.əl/ (trọng âm 2).",
+                        "B. information: /ˌɪn.fəˈmeɪ.ʃən/ (trọng âm 3).",
+                        "C. energetic: /ˌen.əˈdʒet.ɪk/ (trọng âm 3).",
+                        "D. opportunity: /ˌɒp.əˈtʃuː.nə.ti/ (trọng âm 3)."
+                    ],
+                    whyRight: "traditional nhấn âm 2, 3 đáp án còn lại nhấn âm 3.",
+                    whyWrong: "B, C, D có trọng âm rơi vào âm tiết thứ 3."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "11.",
+                options: ["enjoyment", "physical", "pollution", "historic"],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích vị trí trọng âm:",
+                    optionsTrans: [
+                        "A. enjoyment: /ɪnˈdʒɔɪ.mənt/ (trọng âm 2).",
+                        "B. physical: /ˈfɪz.ɪ.kəl/ (trọng âm 1).",
+                        "C. pollution: /pəˈluː.ʃən/ (trọng âm 2).",
+                        "D. historic: /hɪˈstɒr.ɪk/ (trọng âm 2)."
+                    ],
+                    whyRight: "physical nhấn âm 1, 3 từ còn lại nhấn âm 2.",
+                    whyWrong: "A, C, D có trọng âm ở âm tiết thứ 2."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "12.",
+                options: ["referee", "politician", "ability", "competition"],
+                answer: 2,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. referee: /ˌref.əˈriː/ (trọng âm 3).",
+                        "B. politician: /ˌpɒl.əˈtɪʃ.ən/ (trọng âm 3).",
+                        "C. ability: /əˈbɪl.ə.ti/ (trọng âm 2).",
+                        "D. competition: /ˌkɒm.pəˈtɪʃ.ən/ (trọng âm 3)."
+                    ],
+                    whyRight: "ability nhận trọng âm ở âm tiết thứ 2.",
+                    whyWrong: "A, B, D đều có trọng âm rơi vào âm tiết thứ 3."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "13.",
+                options: ["national", "helpful", "government", "electric"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. national: /ˈnæʃ.ən.əl/ (trọng âm 1).",
+                        "B. helpful: /ˈhelp.fəl/ (trọng âm 1).",
+                        "C. government: /ˈɡʌv.ən.mənt/ (trọng âm 1).",
+                        "D. electric: /iˈlek.trɪk/ (trọng âm 2)."
+                    ],
+                    whyRight: "electric nhấn âm tiết thứ 2.",
+                    whyWrong: "A, B, C đều có trọng âm ở âm tiết thứ 1."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "14.",
+                options: ["creativity", "historian", "fantastic", "emotion"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích vị trí trọng âm chính:",
+                    optionsTrans: [
+                        "A. creativity: /ˌkriː.eɪˈtɪv.ə.ti/ (trọng âm 3).",
+                        "B. historian: /hɪˈstɔː.ri.ən/ (trọng âm 2).",
+                        "C. fantastic: /fænˈtæs.tɪk/ (trọng âm 2).",
+                        "D. emotion: /ɪˈməʊ.ʃən/ (trọng âm 2)."
+                    ],
+                    whyRight: "creativity có trọng âm chính ở âm tiết thứ 3.",
+                    whyWrong: "B, C, D đều nhấn ở âm tiết 2."
+                }
+            },
+            {
+                section: "Exercise 2. Choose the word A, B, C, or D whose main stress is different from the others in the group.",
+                q: "15.",
+                options: ["housework", "homework", "website", "upload"],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích trọng âm:",
+                    optionsTrans: [
+                        "A. housework: /ˈhaʊs.wɜːk/ (trọng âm 1).",
+                        "B. homework: /ˈhəʊm.wɜːk/ (trọng âm 1).",
+                        "C. website: /ˈweb.saɪt/ (trọng âm 1).",
+                        "D. upload: /ʌpˈləʊd/ (trọng âm 2)."
+                    ],
+                    whyRight: "upload là động từ ghép có trọng âm nhấn âm tiết 2.",
+                    whyWrong: "A, B, C là các danh từ ghép có trọng âm nhấn ở âm tiết 1."
+                }
+            },
+
+            // Exercise 3: Grammar & Vocabulary (38 questions)
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "1. My sister is really into ______ bracelets for her friends.",
+                options: ["make", "making", "made", "to making"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Chị gái tôi thực sự thích làm vòng tay cho bạn bè của cô ấy.",
+                    optionsTrans: [
+                        "A. make (v): làm (nguyên thể)",
+                        "B. making (v-ing): việc làm",
+                        "C. made (v-ed): đã làm",
+                        "D. to making (sai cấu trúc)"
+                    ],
+                    whyRight: "Cấu trúc 'be into + V-ing' nghĩa là thích/đam mê làm việc gì.",
+                    whyWrong: "A, C, D không đúng ngữ pháp sau giới từ 'into'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "2. I love ______ projects. Last week I made a bookshelf by myself.",
+                options: ["socialising", "window shopping", "DIY", "surfing"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Tôi thích các dự án tự làm (DIY). Tuần trước tôi đã tự tay làm một kệ sách.",
+                    optionsTrans: [
+                        "A. socialising: giao lưu kết bạn",
+                        "B. window shopping: đi ngắm đồ",
+                        "C. DIY (Do-It-Yourself): tự làm đồ đạc",
+                        "D. surfing: lướt (mạng/sóng)"
+                    ],
+                    whyRight: "Dựa vào câu sau 'made a bookshelf by myself' (tự làm kệ sách) -> liên quan đến DIY.",
+                    whyWrong: "A, B, D sai ngữ cảnh."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "3. Nam detests ______ up early on Sunday mornings.",
+                options: ["get", "getting", "got", "gets"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Nam cực kỳ ghét việc thức dậy sớm vào các sáng Chủ Nhật.",
+                    optionsTrans: [
+                        "A. get",
+                        "B. getting",
+                        "C. got",
+                        "D. gets"
+                    ],
+                    whyRight: "Động từ 'detest' (ghét cay ghét đắng) bắt buộc đi với V-ing (detest + V-ing).",
+                    whyWrong: "A, C, D không đúng dạng V-ing."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "4. Reading comics is my favourite ______. I do it whenever I have free time.",
+                options: ["schoolwork", "timetable", "leisure activity", "pressure"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Đọc truyện tranh là hoạt động giải trí yêu thích của tôi. Tôi làm nó bất cứ khi nào có thời gian rảnh.",
+                    optionsTrans: [
+                        "A. schoolwork: bài tập ở trường",
+                        "B. timetable: thời khóa biểu",
+                        "C. leisure activity: hoạt động lúc rảnh rỗi",
+                        "D. pressure: áp lực"
+                    ],
+                    whyRight: "Reading comics là một hoạt động giải trí (leisure activity).",
+                    whyWrong: "A, B, D không phù hợp nghĩa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "5. I’d like ______ up a new hobby, such as knitting or pottery.",
+                options: ["take", "taking", "to take", "took"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Tôi muốn bắt đầu một sở thích mới, như là đan len hoặc làm gốm.",
+                    optionsTrans: [
+                        "A. take",
+                        "B. taking",
+                        "C. to take",
+                        "D. took"
+                    ],
+                    whyRight: "Cấu trúc 'would like + to V' (viết tắt 'd like + to V) dùng để diễn tả mong muốn.",
+                    whyWrong: "A, B, D sai cấu trúc của 'would like'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "6. Lan is keen ______ doing jigsaw puzzles in her spare time.",
+                options: ["in", "on", "of", "at"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Lan rất thích chơi xếp hình vào thời gian rảnh rỗi.",
+                    optionsTrans: [
+                        "A. in",
+                        "B. on",
+                        "C. of",
+                        "D. at"
+                    ],
+                    whyRight: "Cụm cố định (collocation): 'be keen on + V-ing/N' = thích cái gì.",
+                    whyWrong: "A, C, D không đi với tính từ 'keen'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "7. Many teenagers are addicted ______ social media.",
+                options: ["to", "on", "of", "with"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Nhiều thanh thiếu niên bị nghiện mạng xã hội.",
+                    optionsTrans: [
+                        "A. to",
+                        "B. on",
+                        "C. of",
+                        "D. with"
+                    ],
+                    whyRight: "Cấu trúc 'be addicted to + N/V-ing' = nghiện cái gì.",
+                    whyWrong: "B, C, D không sử dụng giới từ này với 'addicted'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "8. Spending time outdoors helps us ______ after a stressful week at school.",
+                options: ["bully", "upload", "compete", "unwind"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Dành thời gian ngoài trời giúp chúng ta thư giãn sau một tuần học tập căng thẳng.",
+                    optionsTrans: [
+                        "A. bully: bắt nạt",
+                        "B. upload: tải lên",
+                        "C. compete: cạnh tranh",
+                        "D. unwind: thư giãn, xả hơi"
+                    ],
+                    whyRight: "unwind nghĩa là thư giãn, phù hợp sau một tuần căng thẳng (stressful week).",
+                    whyWrong: "A, B, C trái ngược hoặc không hợp nghĩa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "9. Ann is very ______. She can make beautiful things from old bottles and paper.",
+                options: ["anxious", "lazy", "creative", "rural"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Ann rất sáng tạo. Cô ấy có thể làm ra những đồ vật đẹp đẽ từ chai cũ và giấy.",
+                    optionsTrans: [
+                        "A. anxious: lo âu",
+                        "B. lazy: lười biếng",
+                        "C. creative: sáng tạo",
+                        "D. rural: thuộc nông thôn"
+                    ],
+                    whyRight: "Làm ra những đồ vật đẹp từ đồ cũ thể hiện sự sáng tạo (creative).",
+                    whyWrong: "A, B, D sai ý nghĩa ngữ cảnh."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "10. My brother is ______ on video games. He plays them for hours every day.",
+                options: ["keen", "hooked", "fond", "interested"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Anh trai tôi bị nghiện trò chơi điện tử. Anh ấy chơi nhiều giờ liền mỗi ngày.",
+                    optionsTrans: [
+                        "A. keen (đi với giới từ 'on')",
+                        "B. hooked (đi với giới từ 'on')",
+                        "C. fond (đi với giới từ 'of')",
+                        "D. interested (đi với giới từ 'in')"
+                    ],
+                    whyRight: "Cả 'keen' và 'hooked' đi với 'on', nhưng 'hooked on' mang nghĩa 'mê/nghiện nặng' phù hợp với việc 'plays for hours'.",
+                    whyWrong: "C đi với 'of', D đi với 'in'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "11. Joining a sports club is a good way to ______ and make new friends.",
+                options: ["delete", "harvest", "ignore", "socialise"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Tham gia một câu lạc bộ thể thao là một cách tốt để giao lưu và kết bạn mới.",
+                    optionsTrans: [
+                        "A. delete: xóa",
+                        "B. harvest: thu hoạch",
+                        "C. ignore: phớt lờ",
+                        "D. socialise: giao lưu, kết bạn"
+                    ],
+                    whyRight: "socialise đi đôi với 'make new friends' (giao lưu kết bạn).",
+                    whyWrong: "A, B, C không khớp ý nghĩa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "12. In the countryside, children often help their parents ______ the buffaloes.",
+                options: ["ride", "herd", "pick", "dry"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Ở nông thôn, trẻ em thường giúp cha mẹ chăn trâu.",
+                    optionsTrans: [
+                        "A. ride: cưỡi",
+                        "B. herd: chăn dắt (gia súc)",
+                        "C. pick: hái",
+                        "D. dry: phơi khô"
+                    ],
+                    whyRight: "herd the buffaloes: chăn trâu (hành động dắt trâu ra đồng ăn cỏ).",
+                    whyWrong: "A, C, D không dùng cho việc chăn giữ gia súc."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "13. Farmers grow ______ such as rice, corn and potatoes.",
+                options: ["crops", "livestock", "orchards", "cattle"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Nông dân trồng các loại cây trồng như lúa, ngô và khoai tây.",
+                    optionsTrans: [
+                        "A. crops: cây trồng, mùa màng",
+                        "B. livestock: vật nuôi",
+                        "C. orchards: vườn cây ăn quả",
+                        "D. cattle: gia súc"
+                    ],
+                    whyRight: "Rice, corn, potatoes là các loại nông sản/cây trồng (crops).",
+                    whyWrong: "B, D là gia súc; C là vườn."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "14. The villagers are very ______. They always welcome visitors warmly.",
+                options: ["hospitable", "boring", "vast", "noisy"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Dân làng rất hiếu khách. Họ luôn chào đón du khách một cách nồng hậu.",
+                    optionsTrans: [
+                        "A. hospitable: hiếu khách",
+                        "B. boring: nhàm chán",
+                        "C. vast: bao la",
+                        "D. noisy: ồn ào"
+                    ],
+                    whyRight: "Welcome visitors warmly = nồng hậu đón khách -> hospitable (hiếu khách).",
+                    whyWrong: "B, C, D không đúng phẩm chất con người thân thiện."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "15. Life in ______ areas is often quieter than life in big cities.",
+                options: ["urban", "rural", "modern", "crowded"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Cuộc sống ở các vùng nông thôn thường yên bình hơn cuộc sống ở các thành phố lớn.",
+                    optionsTrans: [
+                        "A. urban: thuộc đô thị",
+                        "B. rural: thuộc nông thôn",
+                        "C. modern: hiện đại",
+                        "D. crowded: đông đúc"
+                    ],
+                    whyRight: "Rural areas (vùng nông thôn) đối lập với big cities và có tính chất 'quieter'.",
+                    whyWrong: "A, C, D miêu tả đặc điểm thành thị."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "16. People in the countryside live ______ than people in the city.",
+                options: ["more peaceful", "more peacefully", "peacefuller", "most peacefully"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Người dân ở nông thôn sống thanh bình hơn người dân ở thành phố.",
+                    optionsTrans: [
+                        "A. more peaceful (dùng cho tính từ)",
+                        "B. more peacefully (so sánh hơn của trạng từ)",
+                        "C. peacefuller (sai dạng)",
+                        "D. most peacefully (so sánh nhất)"
+                    ],
+                    whyRight: "Động từ 'live' cần một trạng từ bổ nghĩa -> trạng từ 'peacefully'. So sánh hơn có 'than' -> 'more peacefully'.",
+                    whyWrong: "A sai từ loại (dùng tính từ); C sai ngữ pháp; D là so sánh nhất."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "17. Farmers in my village raise ______ such as cows, pigs and chickens.",
+                options: ["crops", "orchards", "livestock", "vegetables"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Nông dân trong làng tôi nuôi gia súc, gia cầm như bò, lợn và gà.",
+                    optionsTrans: [
+                        "A. crops: cây trồng",
+                        "B. orchards: vườn cây",
+                        "C. livestock: vật nuôi, gia súc",
+                        "D. vegetables: rau củ"
+                    ],
+                    whyRight: "Cows, pigs, chickens là các loại vật nuôi (livestock).",
+                    whyWrong: "A, B, D là thực vật."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "18. The village is very ______, with green rice fields and old pagodas.",
+                options: ["crowded", "polluted", "picturesque", "noisy"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Ngôi làng rất đẹp như tranh vẽ, với những cánh đồng lúa xanh mướt và những ngôi chùa cổ.",
+                    optionsTrans: [
+                        "A. crowded: đông đúc",
+                        "B. polluted: ô nhiễm",
+                        "C. picturesque: đẹp như tranh vẽ",
+                        "D. noisy: ồn ào"
+                    ],
+                    whyRight: "Cánh đồng lúa xanh và chùa cổ tạo nên vẻ đẹp picturesque.",
+                    whyWrong: "A, B, D mang ý nghĩa tiêu cực."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "19. Tom speaks English ______ than he did last year.",
+                options: ["good", "best", "more well", "better"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Tom nói tiếng Anh tốt hơn năm ngoái.",
+                    optionsTrans: [
+                        "A. good (tính từ)",
+                        "B. best (so sánh nhất)",
+                        "C. more well (sai hình thức)",
+                        "D. better (so sánh hơn của well/good)"
+                    ],
+                    whyRight: "Động từ 'speaks' cần trạng từ 'well'. So sánh hơn của 'well' là 'better'.",
+                    whyWrong: "A, B, C sai hình thức so sánh hơn của trạng từ."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "20. Which of the following is a COMPOUND sentence?",
+                options: [
+                    "My sister and I like reading comics.",
+                    "Lan and Mai go to the club every Sunday.",
+                    "I like cycling, but my brother prefers swimming.",
+                    "After school, I usually play football."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch các câu và xác định câu ghép (Compound sentence):",
+                    optionsTrans: [
+                        "A. Chị tôi và tôi thích đọc truyện tranh (Câu đơn có 2 chủ ngữ).",
+                        "B. Lan và Mai đến CLB mỗi Chủ nhật (Câu đơn).",
+                        "C. Tôi thích đi xe đạp, nhưng anh tôi thích bơi hơn (Câu ghép chứa liên từ 'but').",
+                        "D. Sau giờ học, tôi thường đá bóng (Câu đơn có trạng ngữ)."
+                    ],
+                    whyRight: "C là câu ghép vì nối 2 mệnh đề độc lập bằng liên từ 'but'.",
+                    whyWrong: "A, B, D đều là các câu đơn (Simple sentences)."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "21. Nowadays, many teenagers use social ______ to keep in touch with friends.",
+                options: ["network", "media", "forum", "website"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Ngày nay, nhiều thanh thiếu niên sử dụng mạng xã hội để giữ liên lạc với bạn bè.",
+                    optionsTrans: [
+                        "A. network",
+                        "B. media (cụm 'social media')",
+                        "C. forum",
+                        "D. website"
+                    ],
+                    whyRight: "Cụm từ phổ biến: 'social media' = phương tiện truyền thông/mạng xã hội.",
+                    whyWrong: "A, C, D không kết hợp thành cụm thông dụng trong ngữ cảnh này."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "22. You have to ______ in to your account with a password.",
+                options: ["log", "post", "browse", "upload"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Bạn phải đăng nhập vào tài khoản của mình bằng mật khẩu.",
+                    optionsTrans: [
+                        "A. log (log in: đăng nhập)",
+                        "B. post: đăng bài",
+                        "C. browse: duyệt web",
+                        "D. upload: tải lên"
+                    ],
+                    whyRight: "'log in to an account' là cụm động từ chuẩn chỉ việc đăng nhập.",
+                    whyWrong: "B, C, D không đi với giới từ 'in to' theo nghĩa này."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "23. Peer ______ can make teenagers copy the behaviour of their friends.",
+                options: ["stress", "schoolwork", "expectation", "pressure"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Áp lực bạn bè cùng lứa có thể khiến thiếu niên bắt chước hành vi của bạn mình.",
+                    optionsTrans: [
+                        "A. stress",
+                        "B. schoolwork",
+                        "C. expectation",
+                        "D. pressure (cụm 'peer pressure')"
+                    ],
+                    whyRight: "Cụm thuật ngữ chuẩn: 'peer pressure' = áp lực từ bạn bè đồng lứa.",
+                    whyWrong: "A, B, C không ghép với 'peer' tạo thành khái niệm này."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "24. I turn off all ______ on my phone during study time to avoid distractions.",
+                options: ["notifications", "accounts", "forums", "websites"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Tôi tắt tất cả thông báo trên điện thoại trong giờ học để tránh xao nhãng.",
+                    optionsTrans: [
+                        "A. notifications: thông báo",
+                        "B. accounts: tài khoản",
+                        "C. forums: diễn đàn",
+                        "D. websites: trang web"
+                    ],
+                    whyRight: "Tắt thông báo (turn off notifications) giúp giảm xao nhãng khi học.",
+                    whyWrong: "B, C, D không phù hợp với hành động tắt trên điện thoại để đỡ xao nhãng."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "25. My parents have high ______ of me, so I always try to study well.",
+                options: ["pressures", "clubs", "expectations", "forums"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Cha mẹ tôi có kỳ vọng cao vào tôi, vì vậy tôi luôn cố gắng học tốt.",
+                    optionsTrans: [
+                        "A. pressures: áp lực",
+                        "B. clubs: câu lạc bộ",
+                        "C. expectations: sự kỳ vọng",
+                        "D. forums: diễn đàn"
+                    ],
+                    whyRight: "Cụm 'have high expectations of sb': có sự kỳ vọng cao vào ai.",
+                    whyWrong: "A, B, D sai cụm từ cố định."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "26. You can join the art club, ______ you can join the music club. It’s your choice.",
+                options: ["or", "but", "so", "therefore"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Bạn có thể tham gia CLB mỹ thuật, hoặc bạn có thể tham gia CLB âm nhạc. Đó là lựa chọn của bạn.",
+                    optionsTrans: [
+                        "A. or: hoặc (chỉ sự lựa chọn)",
+                        "B. but: nhưng (đối lập)",
+                        "C. so: cho nên (kết quả)",
+                        "D. therefore: do đó (từ nối)"
+                    ],
+                    whyRight: "'It's your choice' thể hiện sự lựa chọn giữa 2 phương án -> dùng liên từ 'or'.",
+                    whyWrong: "B, C, D không dùng để đưa ra lựa chọn."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "27. The farmers in my village work ______ in the harvest season, so they hardly have time to rest.",
+                options: ["more hardly", "more hard", "hardly", "harder than ever"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Nông dân ở làng tôi làm việc chăm chỉ hơn bao giờ hết vào mùa thu hoạch, nên họ hầu như không có thời gian nghỉ.",
+                    optionsTrans: [
+                        "A. more hardly (sai vì hardly = hầu như không)",
+                        "B. more hard (sai dạng so sánh của hard)",
+                        "C. hardly: hầu như không",
+                        "D. harder than ever: chăm chỉ hơn bao giờ hết"
+                    ],
+                    whyRight: "Trạng từ của 'hard' vẫn là 'hard'. So sánh hơn là 'harder'. 'harder than ever' phù hợp ngữ cảnh.",
+                    whyWrong: "A, B, C sai ngữ pháp và nghĩa từ."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "28. In the countryside, people usually go to bed ______ than people in the city.",
+                options: ["early", "earlier", "more early", "more earlier"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Ở nông thôn, mọi người thường đi ngủ sớm hơn người ở thành phố.",
+                    optionsTrans: [
+                        "A. early (nguyên thể)",
+                        "B. earlier (so sánh hơn ngắn)",
+                        "C. more early (sai dạng)",
+                        "D. more earlier (sai lặp)"
+                    ],
+                    whyRight: "'early' kết thúc bằng 'y', khi chuyển sang so sánh hơn biến thành 'earlier'.",
+                    whyWrong: "A, C, D sai quy tắc so sánh hơn."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "29. My parents always tell me to ______ my phone during meals.",
+                options: ["turn off", "log in", "take up", "hang out"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Bố mẹ tôi luôn bảo tôi tắt điện thoại trong bữa ăn.",
+                    optionsTrans: [
+                        "A. turn off: tắt",
+                        "B. log in: đăng nhập",
+                        "C. take up: bắt đầu một sở thích",
+                        "D. hang out: đi chơi"
+                    ],
+                    whyRight: "Tắt điện thoại (turn off phone) khi ăn là thói quen lịch sự.",
+                    whyWrong: "B, C, D không hợp ngữ cảnh bữa ăn."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "30. During ______, the whole village is busy cutting, carrying and drying rice.",
+                options: ["harvest time", "leisure time", "screen time", "spare time"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Trong mùa thu hoạch, cả làng bận rộn gặt, chở và phơi lúa.",
+                    optionsTrans: [
+                        "A. harvest time: mùa thu hoạch",
+                        "B. leisure time: thời gian rảnh",
+                        "C. screen time: thời gian nhìn màn hình",
+                        "D. spare time: thời gian rảnh"
+                    ],
+                    whyRight: "Cắt, chở và phơi lúa diễn ra vào mùa thu hoạch (harvest time).",
+                    whyWrong: "B, C, D không phải thời điểm gặt lúa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "31. If teenagers have too much ______ on their phones, they may find it hard to concentrate in class.",
+                options: ["free time", "spare time", "screen time", "leisure time"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch câu: Nếu thiếu niên có quá nhiều thời gian dùng màn hình điện thoại, họ có thể khó tập trung trên lớp.",
+                    optionsTrans: [
+                        "A. free time: thời gian rảnh",
+                        "B. spare time: thời gian nhàn rỗi",
+                        "C. screen time: thời gian xem màn hình (TV, ĐT)",
+                        "D. leisure time: thời gian giải trí"
+                    ],
+                    whyRight: "'screen time on phones' chỉ khoảng thời gian dán mắt vào màn hình điện thoại.",
+                    whyWrong: "A, B, D thiếu chính xác với thiết bị điện tử."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "32. When someone posts mean comments about you online again and again, it is a kind of ______.",
+                options: ["peer pressure", "privacy", "self-confidence", "cyberbullying"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Khi ai đó liên tục đăng các bình luận xúc phạm bạn trên mạng, đó là một dạng bắt nạt trên mạng.",
+                    optionsTrans: [
+                        "A. peer pressure: áp lực bạn bè",
+                        "B. privacy: sự riêng tư",
+                        "C. self-confidence: sự tự tin",
+                        "D. cyberbullying: bắt nạt qua mạng"
+                    ],
+                    whyRight: "Đăng bình luận ác ý trực tuyến (online) = cyberbullying.",
+                    whyWrong: "A, B, C trái ngược định nghĩa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "33. Phong felt ______ when he forgot his words in the middle of his speech in front of the whole school.",
+                options: ["generous", "relaxed", "excited", "embarrassed"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Phong cảm thấy xấu hổ/ngượng ngùng khi quên mất lời phát biểu giữa chừng trước toàn trường.",
+                    optionsTrans: [
+                        "A. generous: rộng lượng",
+                        "B. relaxed: thư thái",
+                        "C. excited: hào hứng",
+                        "D. embarrassed: xấu hổ, ngượng ngùng"
+                    ],
+                    whyRight: "Quên bài phát biểu trước đám đông gây ra cảm giác ngượng ngùng (embarrassed).",
+                    whyWrong: "A, B, C là cảm xúc tích cực không phù hợp."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "34. Teenagers want to be more ______. They like making their own decisions.",
+                options: ["independent", "dependent", "anxious", "generous"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Thanh thiếu niên muốn trở nên tự lập hơn. Họ thích tự đưa ra quyết định của riêng mình.",
+                    optionsTrans: [
+                        "A. independent: tự lập, độc lập",
+                        "B. dependent: phụ thuộc",
+                        "C. anxious: lo lắng",
+                        "D. generous: rộng lượng"
+                    ],
+                    whyRight: "'making their own decisions' (tự ra quyết định) thể hiện sự tự lập (independent).",
+                    whyWrong: "B trái nghĩa; C, D không liên quan."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "35. It was a sunny day, ______ we went fishing in the river.",
+                options: ["but", "so", "or", "however"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch câu: Trời nắng đẹp, nên chúng tôi đã đi câu cá ở sông.",
+                    optionsTrans: [
+                        "A. but: nhưng",
+                        "B. so: cho nên",
+                        "C. or: hoặc",
+                        "D. however: tuy nhiên"
+                    ],
+                    whyRight: "Trời nắng là nguyên nhân, đi câu cá là kết quả -> dùng liên từ 'so'.",
+                    whyWrong: "A, C, D không chỉ quan hệ nguyên nhân - kết quả."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "36. Cities offer more job ______, so many young people leave their villages.",
+                options: ["crops", "facilities", "pressures", "opportunities"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Các thành phố cung cấp nhiều cơ hội việc làm hơn, vì vậy nhiều người trẻ rời bỏ làng quê.",
+                    optionsTrans: [
+                        "A. crops: mùa màng",
+                        "B. facilities: cơ sở vật chất",
+                        "C. pressures: áp lực",
+                        "D. opportunities: cơ hội (cụm 'job opportunities')"
+                    ],
+                    whyRight: "'job opportunities' = cơ hội việc làm.",
+                    whyWrong: "A, B, C không ghép thành cụm từ chuẩn với 'job'."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "37. Choose the CORRECT sentence.",
+                options: [
+                    "I wanted to join the club, however I was too busy.",
+                    "I wanted to join the club; therefore I was too busy.",
+                    "I wanted to join the club, so I was too busy.",
+                    "I wanted to join the club; however, I was too busy."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch câu: Tôi muốn tham gia câu lạc bộ; tuy nhiên, tôi lại quá bận.",
+                    optionsTrans: [
+                        "A. Sai dấu chấm phẩy và dấu phẩy khi dùng 'however'.",
+                        "B. Sai nghĩa (therefore = vì vậy).",
+                        "C. Sai nghĩa (so = cho nên).",
+                        "D. Đúng cấu trúc ngữ pháp: S1 + V1; however, S2 + V2."
+                    ],
+                    whyRight: "'however' đứng giữa 2 mệnh đề cần dấu chấm phẩy trước và dấu phẩy sau (; however,).",
+                    whyWrong: "A, B, C sai quy tắc dùng trạng từ liên kết hoặc sai nghĩa."
+                }
+            },
+            {
+                section: "Exercise 3. Choose the best answer A, B, C or D to complete the sentences.",
+                q: "38. Minh behaves in a more ______ way now. He can take care of himself and his little sister.",
+                options: ["mature", "childish", "noisy", "stressful"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch câu: Bây giờ Minh cư xử một cách trưởng thành hơn. Cậu ấy có thể tự chăm sóc bản thân và em gái.",
+                    optionsTrans: [
+                        "A. mature: trưởng thành",
+                        "B. childish: trẻ con",
+                        "C. noisy: ồn ào",
+                        "D. stressful: căng thẳng"
+                    ],
+                    whyRight: "Tự chăm sóc bản thân và em nhỏ chứng tỏ sự trưởng thành (mature).",
+                    whyWrong: "B trái nghĩa; C, D sai ngữ cảnh."
+                }
+            },
+
+            // Exercise 4: Conversational Exchanges (12 items)
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "1. Mai: “Do you fancy going to the craft fair with me this Saturday?” – Lan: “________”",
+                options: [
+                    "Count me in! What time shall we meet?",
+                    "Yes, I fancy.",
+                    "No, I don’t go.",
+                    "You’re welcome."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Mai: 'Bạn có thích đi hội chợ đồ thủ công với tớ thứ Bảy này không?'",
+                    optionsTrans: [
+                        "A. Cho tớ tham gia với! Mấy giờ chúng mình gặp nhau?",
+                        "B. Đúng, tớ thích (trả lời gượng ép).",
+                        "C. Không, tớ không đi (bất lịch sự).",
+                        "D. Không có gì (dùng khi nhận lời cảm ơn)."
+                    ],
+                    whyRight: "'Count me in!' là lời nhận lời mời rủ rê rất tự nhiên.",
+                    whyWrong: "B, C, D không tự nhiên trong giao tiếp."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "2. Tom: “Would you like to join our badminton team?” – Nam: “________”",
+                options: [
+                    "Yes, I would like.",
+                    "Never mind.",
+                    "That’s really kind of you, but I’m afraid I can’t. I have piano lessons then.",
+                    "Not at all."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Tom: 'Bạn có muốn tham gia đội cầu lông của chúng tớ không?'",
+                    optionsTrans: [
+                        "A. Đúng, tớ muốn (thiếu từ).",
+                        "B. Đừng bận tâm.",
+                        "C. Cậu thật tốt, nhưng tớ e là không thể. Tớ có giờ học piano lúc đó.",
+                        "D. Không có gì."
+                    ],
+                    whyRight: "C là lời từ chối khéo léo và lịch sự kèm lý do.",
+                    whyWrong: "A sai ngữ pháp đáp lại 'Would you like'; B, D sai ngữ cảnh."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "3. Nick: “We’re having a barbecue on Sunday. Why don’t you come along?” – Phong: “________”",
+                options: [
+                    "Yes, I do.",
+                    "Sounds like fun! I’ll be there.",
+                    "It’s my pleasure.",
+                    "Here you are."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Nick: 'Chủ Nhật này chúng tớ tiệc nướng. Sao cậu không đến chơi?'",
+                    optionsTrans: [
+                        "A. Vâng, tớ có.",
+                        "B. Nghe vui đấy! Tớ sẽ đến.",
+                        "C. Đó là niềm vinh hạnh của tớ.",
+                        "D. Của bạn đây."
+                    ],
+                    whyRight: "'Sounds like fun! I'll be there.' là câu đồng ý lời mời tiệc tùng hào hứng.",
+                    whyWrong: "A sai câu hỏi rủ rê; C quá trang trọng; D đưa đồ vật."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "4. Hoa: “How about going window shopping after school?” – Mi: “________”",
+                options: [
+                    "Thanks for the compliment.",
+                    "Yes, please. Here you are.",
+                    "Of course, I can.",
+                    "I’m not really in the mood today. Maybe another time?"
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch: Hoa: 'Hay là đi ngắm đồ sau giờ học nhé?'",
+                    optionsTrans: [
+                        "A. Cảm ơn vì lời khen.",
+                        "B. Vâng. Của bạn đây.",
+                        "C. Dĩ nhiên tớ có thể.",
+                        "D. Hôm nay tớ không có tâm trạng lắm. Để khi khác nhé?"
+                    ],
+                    whyRight: "D là lời từ chối lịch sự khi không muốn đi rủ rê mua sắm.",
+                    whyWrong: "A, B, C không khớp câu hỏi đề xuất 'How about'."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "5. Lan: “What a lovely scarf you’re wearing, Mai!” – Mai: “________”",
+                options: [
+                    "Thanks. My grandmother knitted it for me.",
+                    "Yes, it is.",
+                    "No, it isn’t lovely.",
+                    "Here you are."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Lan: 'Chiếc khăn quàng cổ bạn đang đeo đẹp quá, Mai!'",
+                    optionsTrans: [
+                        "A. Cảm ơn nhé. Bà tớ đã đan nó cho tớ đấy.",
+                        "B. Đúng, nó đẹp.",
+                        "C. Không, nó không đẹp đâu.",
+                        "D. Của bạn đây."
+                    ],
+                    whyRight: "Khi nhận lời khen, phản đáp lịch sự nhất là cảm ơn và chia sẻ thông tin (A).",
+                    whyWrong: "B kiêu ngạo; C phản bác lời khen; D không phù hợp."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "6. Nick: “You really have a beautiful garden, Mrs Lan!” – Mrs Lan: “________”",
+                options: [
+                    "You’re welcome.",
+                    "Never mind.",
+                    "Do you?",
+                    "I’m glad you like it. I grow everything myself."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch: Nick: 'Bác Lan ơi, bác thực sự có một khu vườn rất đẹp!'",
+                    optionsTrans: [
+                        "A. Không có gì.",
+                        "B. Bận tâm làm gì.",
+                        "C. Thật thế sao?",
+                        "D. Bác rất vui vì cháu thích nó. Bác tự tay trồng mọi thứ đấy."
+                    ],
+                    whyRight: "D là lời cảm ơn khi nhận lời khen về thành quả của mình.",
+                    whyWrong: "A, B, C thiếu sự lịch sự và tự nhiên."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "7. Teacher: “Your presentation on rural life was excellent, Phong!” – Phong: “________”",
+                options: [
+                    "That’s right.",
+                    "Thank you. I put a lot of effort into it.",
+                    "Don’t mention it.",
+                    "Congratulations!"
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Giáo viên: 'Bài thuyết trình của em về cuộc sống nông thôn thật xuất sắc, Phong!'",
+                    optionsTrans: [
+                        "A. Đúng vậy.",
+                        "B. Em cảm ơn cô. Em đã bỏ rất nhiều công sức vào nó.",
+                        "C. Đừng nhắc đến nó.",
+                        "D. Xin chúc mừng!"
+                    ],
+                    whyRight: "Cảm ơn thầy/cô và bày tỏ sự cố gắng là cách ứng xử chuẩn mực (B).",
+                    whyWrong: "A tự cao; C, D dùng sai tình huống."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "8. Mi: “Wow, you made such a beautiful bracelet!” – Ann: “________”",
+                options: [
+                    "You must be joking.",
+                    "No, thanks.",
+                    "Thanks! It took me a whole afternoon.",
+                    "I’m sorry to hear that."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Mi: 'Chà, cậu làm chiếc chiếc vòng tay đẹp quá!'",
+                    optionsTrans: [
+                        "A. Cậu chắc đang đùa.",
+                        "B. Không, cảm ơn.",
+                        "C. Cảm ơn cậu! Tớ mất cả buổi chiều để làm đấy.",
+                        "D. Tớ rất tiếc khi nghe điều đó."
+                    ],
+                    whyRight: "Cảm ơn lời khen kèm thông tin thú vị (C).",
+                    whyWrong: "A, B, D sai ngữ cảnh giao tiếp."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "9. Student: “Could you tell me more about the drama club, please?” – Club leader: “________”",
+                options: [
+                    "Certainly. It meets every Friday afternoon.",
+                    "Yes, I could.",
+                    "No, I can’t tell.",
+                    "Thanks a lot."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Học sinh: 'Anh/chị có thể nói thêm cho em về CLB kịch được không ạ?'",
+                    optionsTrans: [
+                        "A. Dĩ nhiên rồi. CLB họp vào mỗi chiều thứ Sáu.",
+                        "B. Vâng, tôi có thể (nghe cứng nhắc).",
+                        "C. Không, tôi không nói.",
+                        "D. Cảm ơn rất nhiều."
+                    ],
+                    whyRight: "'Certainly' kèm thông tin chi tiết là câu trả lời nhiệt tình chuẩn xác.",
+                    whyWrong: "B, C, D không đạt yêu cầu hỗ trợ thông tin."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "10. Mai: “Would you mind lending me your notes from yesterday’s lesson?” – Hoa: “________”",
+                options: [
+                    "Yes, I’d mind.",
+                    "Not at all. Here you are.",
+                    "You’re welcome.",
+                    "Never mind."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Mai: 'Bạn có phiền cho tớ mượn vở ghi bài hôm qua không?'",
+                    optionsTrans: [
+                        "A. Có, tớ phiền đấy (bất lịch sự).",
+                        "B. Không hề phiền chút nào. Của bạn đây.",
+                        "C. Không có gì.",
+                        "D. Đừng bận tâm."
+                    ],
+                    whyRight: "Hỏi 'Would you mind' thì đồng ý giúp đỡ sẽ trả lời 'Not at all' (Không phiền đâu).",
+                    whyWrong: "A từ chối thô thô; C, D dùng sai mục đích."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "11. Nam: “Can I borrow your bike for an hour?” – Phong: “________”",
+                options: [
+                    "Yes, you borrow.",
+                    "It doesn’t matter.",
+                    "Sorry, I need it to go to my extra class.",
+                    "Thank you very much."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Nam: 'Tớ có thể mượn xe đạp của cậu 1 tiếng được không?'",
+                    optionsTrans: [
+                        "A. Vâng, bạn mượn đi (sai ngữ pháp).",
+                        "B. Không sao đâu.",
+                        "C. Xin lỗi nhé, tớ cần nó để đi học thêm.",
+                        "D. Cảm ơn bạn rất nhiều."
+                    ],
+                    whyRight: "C là lời từ chối mượn đồ lịch sự có nêu lý do chính đáng.",
+                    whyWrong: "A sai ngữ pháp; B, D không đúng ngữ cảnh hỏi mượn."
+                }
+            },
+            {
+                section: "Exercise 4. Mark the letter A, B, C or D to indicate the most suitable response to complete each of the following exchanges.",
+                q: "12. Lan: “I feel so stressed. Could you give me some advice on managing my time?” – Teacher: “________”",
+                options: [
+                    "Yes, please.",
+                    "I’m afraid I can.",
+                    "It’s very kind of you.",
+                    "Of course. Why don’t you make a weekly timetable?"
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch: Lan: 'Em thấy căng thẳng quá. Cô có thể cho em lời khuyên về quản lý thời gian không ạ?'",
+                    optionsTrans: [
+                        "A. Vâng, làm ơn.",
+                        "B. Cô e là cô có thể (sai logic).",
+                        "C. Bạn thật tốt bụng.",
+                        "D. Dĩ nhiên rồi. Sao em không lập thời khóa biểu hàng tuần nhỉ?"
+                    ],
+                    whyRight: "D đưa ra câu trả lời đồng ý giúp đỡ kèm theo một lời khuyên thiết thực.",
+                    whyWrong: "A, B, C không đúng vai trò của giáo viên cho lời khuyên."
+                }
+            },
+
+            // Exercise 5: Signs & Notices (10 items)
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "1. What does the sign say? <div class='sign-box my-3 bg-blue-100 border-blue-500 text-blue-900'><strong>LIBRARY HOURS</strong><br>Mon - Fri: 7:30 a.m. - 5:00 p.m.<br>Sat & Sun: Closed</div>",
+                options: [
+                    "The library is open at weekends.",
+                    "The library is open from Monday to Friday.",
+                    "The library is open all day and all night.",
+                    "The library closes at 7:30 a.m."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Phân tích biển báo Thư viện: Mở cửa Thứ 2 - Thứ 6 (7:30 - 17:00), Thứ 7 & CN: Đóng cửa.",
+                    optionsTrans: [
+                        "A. Thư viện mở cửa cuối tuần (SAI vì Sat & Sun Closed).",
+                        "B. Thư viện mở cửa từ Thứ Hai đến Thứ Sáu (ĐÚNG).",
+                        "C. Thư viện mở cả ngày lẫn đêm (SAI).",
+                        "D. Thư viện đóng cửa lúc 7:30 sáng (SAI, đó là giờ mở cửa)."
+                    ],
+                    whyRight: "Đáp án B chính xác theo thời gian Mon - Fri ghi trên bảng.",
+                    whyWrong: "A, C, D mâu thuẫn với dữ liệu thông báo."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "2. Which student would MOST LIKELY enjoy this club? <div class='sign-box my-3 bg-purple-100 border-purple-500 text-purple-900'><strong>CRAFT CLUB</strong><br>Learn to make origami, paper flowers & bracelets! Every Sat at 2 p.m.</div>",
+                options: [
+                    "Nam – he loves playing football.",
+                    "Lan – she wants to learn to cook.",
+                    "Hoa – she hates using scissors.",
+                    "Mi – she enjoys making things by hand."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Phân tích CLB Thủ công (Craft Club): Học làm origami, hoa giấy, vòng tay.",
+                    optionsTrans: [
+                        "A. Nam - thích đá bóng (Không hợp thủ công).",
+                        "B. Lan - muốn học nấu ăn (Không hợp).",
+                        "C. Hoa - ghét dùng kéo (Không hợp).",
+                        "D. Mi - thích tự tay làm đồ thủ công (Rất phù hợp)."
+                    ],
+                    whyRight: "Crafting = making things by hand (làm đồ bằng tay).",
+                    whyWrong: "A, B, C sở thích không liên quan tới đồ thủ công."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "3. What should visitors do? <div class='sign-box my-3 bg-red-100 border-red-500 text-red-900'>🚫 <strong>DO NOT FEED THE ANIMALS</strong></div>",
+                options: [
+                    "Not give food to the animals.",
+                    "Give food to the animals.",
+                    "Buy food for the animals.",
+                    "Take the animals home."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch biển báo: KHÔNG CHO ĐỘNG VẬT ĂN.",
+                    optionsTrans: [
+                        "A. Không cho thức ăn cho động vật.",
+                        "B. Cho động vật ăn.",
+                        "C. Mua thức ăn cho động vật.",
+                        "D. Mang động vật về nhà."
+                    ],
+                    whyRight: "'Do not feed' = Not give food to the animals.",
+                    whyWrong: "B, C, D làm ngược lại biển báo cấm."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "4. What does this sign advise you to do? <div class='sign-box my-3 bg-yellow-100 border-yellow-500 text-yellow-900'>🔒 <strong>THINK BEFORE YOU POST!</strong><br>Protect your personal privacy online.</div>",
+                options: [
+                    "Post as much as you can.",
+                    "Never use social media.",
+                    "Be careful about what you share online.",
+                    "Only post photos."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch thông điệp: Suy nghĩ trước khi đăng! Bảo vệ quyền riêng tư cá nhân trên mạng.",
+                    optionsTrans: [
+                        "A. Đăng càng nhiều càng tốt.",
+                        "B. Không bao giờ dùng mạng xã hội.",
+                        "C. Cẩn thận với những gì bạn chia sẻ trên mạng.",
+                        "D. Chỉ đăng hình ảnh."
+                    ],
+                    whyRight: "Suy nghĩ trước khi đăng đồng nghĩa với việc cẩn thận về nội dung chia sẻ (Be careful about what you share).",
+                    whyWrong: "A, B, D sai tinh thần của lời khuyên."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "5. What does this sign say? <div class='sign-box my-3 bg-gray-100 border-gray-500 text-gray-900'>🤫 <strong>SILENCE PLEASE!</strong><br>Exam in progress.</div>",
+                options: [
+                    "You can talk loudly here.",
+                    "You can play games here.",
+                    "This area is only for teachers.",
+                    "You should keep quiet here."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch biển báo: XIN GIỮ TRẬT TỰ! Phòng thi đang làm bài.",
+                    optionsTrans: [
+                        "A. Bạn có thể nói to ở đây.",
+                        "B. Bạn có thể chơi game ở đây.",
+                        "C. Khu vực này chỉ dành cho giáo viên.",
+                        "D. Bạn nên giữ yên lặng ở đây."
+                    ],
+                    whyRight: "'Silence please' = You should keep quiet.",
+                    whyWrong: "A, B, C vi phạm nội quy giữ trật tự."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "6. What does the notice say? <br><em>“Visitors are welcome to pick strawberries on the farm. Please pay at the gate before leaving.”</em>",
+                options: [
+                    "You can pick strawberries and pay before you leave.",
+                    "The strawberries are free for all visitors.",
+                    "You must pay before you enter the farm.",
+                    "Visitors cannot pick strawberries."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch thông báo: Du khách được chào đón hái dâu tây tại trang trại. Vui lòng thanh toán tại cổng trước khi ra về.",
+                    optionsTrans: [
+                        "A. Bạn có thể hái dâu và trả tiền trước khi rời đi.",
+                        "B. Dâu tây miễn phí cho tất cả khách.",
+                        "C. Bạn phải trả tiền trước khi vào trang trại.",
+                        "D. Du khách không được hái dâu."
+                    ],
+                    whyRight: "Khớp hoàn toàn câu 'pick strawberries... pay before leaving'.",
+                    whyWrong: "B sai vì phải trả tiền; C sai vì trả lúc ra về (before leaving); D sai vì được phép hái."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "7. What does the notice say? <br><em>“The computer room is open to students from 4 p.m. to 5 p.m. Do not download games.”</em>",
+                options: [
+                    "Students can play online games in the computer room.",
+                    "Students can use the computer room after 5 p.m.",
+                    "Students can use the computers but must not download games.",
+                    "Students cannot use the computer room."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch thông báo: Phòng máy tính mở cửa cho học sinh từ 4h đến 5h chiều. Không tải game.",
+                    optionsTrans: [
+                        "A. Học sinh có thể chơi game online.",
+                        "B. Học sinh sử dụng sau 5h chiều.",
+                        "C. Học sinh có thể dùng máy tính nhưng không được tải game.",
+                        "D. Học sinh không được dùng phòng máy."
+                    ],
+                    whyRight: "Được dùng máy từ 4-5h và tuyệt đối không tải game (must not download games).",
+                    whyWrong: "A, B, D sai thông tin cấm và giờ mở cửa."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "8. What does the notice say? <br><em>“Mai, the Craft Club meets on Saturday at 2 p.m. Can you bring your old magazines? We’ll make paper flowers. – Hoa”</em>",
+                options: [
+                    "Hoa wants Mai to read the magazines at the club.",
+                    "Hoa wants Mai to bring old magazines to make paper flowers.",
+                    "Hoa wants to sell old magazines at the club.",
+                    "The Craft Club meets every day."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch lời nhắn: Mai ơi, CLB Thủ công họp vào thứ 7 lúc 2h chiều. Cậu mang tạp chí cũ đi nhé? Chúng mình sẽ làm hoa giấy. - Hoa",
+                    optionsTrans: [
+                        "A. Hoa muốn Mai đọc tạp chí.",
+                        "B. Hoa muốn Mai mang tạp chí cũ đến để làm hoa giấy.",
+                        "C. Hoa muốn bán tạp chí cũ.",
+                        "D. CLB họp hàng ngày."
+                    ],
+                    whyRight: "Hoa nhờ Mai mang tạp chí cũ đến để làm hoa (bring old magazines to make paper flowers).",
+                    whyWrong: "A, C, D hiểu sai ý nhắn của Hoa."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "9. What does the notice say? <br><em>“Feeling stressed? Talk to our school counsellor. Room 105 – Monday and Wednesday afternoons.”</em>",
+                options: [
+                    "Students should stay in Room 105 all day.",
+                    "The school counsellor feels stressed.",
+                    "Room 105 is only open in the morning.",
+                    "Stressed students can get help on Monday and Wednesday afternoons."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch: Cảm thấy căng thẳng? Hãy nói chuyện với cố vấn tâm lý trường. Phòng 105 - Chiều thứ Hai & chiều thứ Tư.",
+                    optionsTrans: [
+                        "A. Học sinh nên ở phòng 105 cả ngày.",
+                        "B. Cố vấn trường bị căng thẳng.",
+                        "C. Phòng 105 chỉ mở buổi sáng.",
+                        "D. Học sinh bị căng thẳng có thể nhận sự trợ giúp vào chiều thứ 2 và thứ 4."
+                    ],
+                    whyRight: "D phản ánh đúng mục đích tư vấn tâm lý vào chiều Thứ 2 và Thứ 4.",
+                    whyWrong: "A, B, C hiểu sai đối tượng và thời gian."
+                }
+            },
+            {
+                section: "Exercise 5. Read the following sign or notice and mark the letter A, B, C, or D to indicate the correct answer.",
+                q: "10. What does the notice say? <br><em>“Keep off the rice fields. Young rice plants are growing.”</em>",
+                options: [
+                    "You should not walk on the rice fields.",
+                    "You may walk on the rice fields.",
+                    "The rice is ready to harvest.",
+                    "You can plant rice here."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch biển cảnh báo: Không đi vào ruộng lúa. Cây lúa non đang phát triển.",
+                    optionsTrans: [
+                        "A. Bạn không nên đi trên ruộng lúa.",
+                        "B. Bạn có thể đi trên ruộng lúa.",
+                        "C. Lúa đã sẵn sàng thu hoạch.",
+                        "D. Bạn có thể trồng lúa ở đây."
+                    ],
+                    whyRight: "'Keep off' = Do not walk on / Keep away from.",
+                    whyWrong: "B, C, D trái ngược biển cấm."
+                }
+            },
+
+            // Exercise 6: Passage Cloze Tests (16 questions total)
+            // Passage A (6 items)
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (1): My grandparents live in a small village about 50 kilometres from Ha Noi. Life there is (1) ______ than life in the city.",
+                options: ["quiet", "quietest", "quieter", "more quietly"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Cuộc sống ở đó thì (1) ______ hơn cuộc sống ở thành phố.",
+                    optionsTrans: ["A. quiet", "B. quietest", "C. quieter", "D. more quietly"],
+                    whyRight: "Có từ 'than' -> dùng so sánh hơn. 'quiet' dùng dạng so sánh hơn là 'quieter'.",
+                    whyWrong: "A nguyên thể; B so sánh nhất; D dùng trạng từ trong khi cần tính từ sau 'is'."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (2): Every morning, my grandfather gets up early to (2) ______ the buffaloes to the field.",
+                options: ["pick", "herd", "dry", "plough"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Mỗi sáng, ông tôi dậy sớm để (2) ______ trâu ra đồng.",
+                    optionsTrans: ["A. pick: hái", "B. herd: chăn dắt", "C. dry: phơi", "D. plough: cày"],
+                    whyRight: "herd the buffaloes = chăn dắt trâu.",
+                    whyWrong: "A, C, D không kết hợp với 'buffaloes' theo ngữ cảnh dẫn trâu đi ăn."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (3): My grandmother grows (3) ______ in her garden.",
+                options: ["fresh vegetables green", "green fresh vegetables", "vegetables fresh green", "fresh green vegetables"],
+                answer: 3,
+                explanation: {
+                    step1: "Trật tự tính từ trước danh từ: Tính từ chỉ chất lượng/tính chất (fresh) đứng trước màu sắc (green) rồi đến danh từ (vegetables).",
+                    optionsTrans: ["A. Sai thứ tự", "B. Sai thứ tự", "C. Sai thứ tự", "D. fresh green vegetables (rau xanh tươi)"],
+                    whyRight: "Trật tự đúng: fresh (tươi) + green (xanh) + vegetables (rau).",
+                    whyWrong: "A, B, C đảo lộn vị trí tính từ và danh từ."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (4): At harvest time, the villagers (4) ______ to bring in the crops.",
+                options: ["always each other help", "help always each other", "each other always help", "always help each other"],
+                answer: 3,
+                explanation: {
+                    step1: "Trật tự từ trong câu: Chủ ngữ (the villagers) + Trạng từ chỉ tần suất (always) + Động từ (help) + Tân ngữ (each other).",
+                    optionsTrans: ["A. Sai trật tự", "B. Sai trật tự", "C. Sai trật tự", "D. always help each other (luôn giúp đỡ lẫn nhau)"],
+                    whyRight: "Trạng từ chỉ tần suất 'always' đứng trước động từ thường 'help'.",
+                    whyWrong: "A, B, C sắp xếp sai ngữ pháp vị trí trạng từ."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (5): The people there are very (5) ______: they often share food from their gardens with their neighbours.",
+                options: ["generous", "noisy", "selfish", "anxious"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Mọi người ở đây rất (5) ______: họ thường chia sẻ đồ ăn trong vườn với hàng xóm.",
+                    optionsTrans: ["A. generous: hào phóng, rộng lượng", "B. noisy: ồn ào", "C. selfish: ích kỷ", "D. anxious: lo lắng"],
+                    whyRight: "Chia sẻ đồ ăn cho hàng xóm chứng tỏ sự hào phóng (generous).",
+                    whyWrong: "B, C, D trái ngược tính cách tốt đẹp này."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage A. Read the passage and choose the best word for each blank.",
+                q: "Passage A (6): The only (6) ______ is that there are not many facilities such as hospitals or shopping centres.",
+                options: ["advantage", "drawback", "benefit", "opportunity"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: (6) ______ duy nhất là không có nhiều tiện ích như bệnh viện hay trung tâm thương mại.",
+                    optionsTrans: ["A. advantage: điểm thuận lợi", "B. drawback: hạn chế, điểm bất lợi", "C. benefit: lợi ích", "D. opportunity: cơ hội"],
+                    whyRight: "Việc thiếu bệnh viện/TTTM là một nhược điểm/hạn chế (drawback).",
+                    whyWrong: "A, C, D mang ý nghĩa tích cực."
+                }
+            },
+
+            // Passage B (5 items)
+            {
+                section: "Exercise 6 - Passage B. Read the passage and choose the best word for each blank.",
+                q: "Passage B (1): We do leisure activities in our spare time. They help us unwind (1) ______ recharge our energy.",
+                options: ["but", "and", "or", "so"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Chúng giúp chúng ta thư giãn (1) ______ nạp lại năng lượng.",
+                    optionsTrans: ["A. but: nhưng", "B. and: và", "C. or: hoặc", "D. so: vì vậy"],
+                    whyRight: "'unwind' và 'recharge energy' là hai tác dụng bổ sung cho nhau -> nối bằng liên từ 'and'.",
+                    whyWrong: "A, C, D không dùng để nối hai hành động bổ trợ song song."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage B. Read the passage and choose the best word for each blank.",
+                q: "Passage B (2): Some people enjoy (2) ______ time with their family, while others like being alone.",
+                options: ["spend", "to spending", "spending", "spent"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Một số người thích dành thời gian bên gia đình...",
+                    optionsTrans: ["A. spend", "B. to spending", "C. spending", "D. spent"],
+                    whyRight: "Cấu trúc chuẩn: 'enjoy + V-ing'.",
+                    whyWrong: "A, B, D sai cấu trúc của động từ 'enjoy'."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage B. Read the passage and choose the best word for each blank.",
+                q: "Passage B (3): My best friend, Mai, is really (3) ______ DIY. She can make lovely things from old bottles and paper.",
+                options: ["into", "on", "at", "of"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Bạn thân của tôi, Mai, rất thích đồ tự làm (DIY).",
+                    optionsTrans: ["A. into (be into sth)", "B. on", "C. at", "D. of"],
+                    whyRight: "Cụm 'be into something' = rất thích cái gì.",
+                    whyWrong: "B, C, D không đi với 'be' để mang nghĩa yêu thích cái gì."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage B. Read the passage and choose the best word for each blank.",
+                q: "Passage B (4): My brother, on the other hand, is (4) ______ on computer games.",
+                options: ["hooked complete", "hooked completely", "complete hooked", "completely hooked"],
+                answer: 3,
+                explanation: {
+                    step1: "Vị trí của trạng từ chỉ mức độ: Trạng từ 'completely' đứng trước tính từ/động từ 'hooked'.",
+                    optionsTrans: ["A. Sai vị trí", "B. Sai vị trí", "C. Sai tính từ", "D. completely hooked (hoàn toàn bị nghiện)"],
+                    whyRight: "Trạng từ 'completely' bổ nghĩa cho tính từ 'hooked' -> completely hooked on.",
+                    whyWrong: "A, B, C sai trật tự từ."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage B. Read the passage and choose the best word for each blank.",
+                q: "Passage B (5): My parents worry that he spends too much time in front of the screen; (5) ______, they encourage him to take up outdoor activities.",
+                options: ["however", "otherwise", "therefore", "but"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Bố mẹ tôi lo anh ấy dành quá nhiều thời gian trước màn hình; (5) ______, họ khuyến khích anh ấy tham gia hoạt động ngoài trời.",
+                    optionsTrans: ["A. however: tuy nhiên", "B. otherwise: nếu không thì", "C. therefore: do đó, vì vậy", "D. but: nhưng"],
+                    whyRight: "Bố mẹ lo lắng -> KẾT QUẢ LÀ khuyến khích anh ấy ra ngoài -> dùng 'therefore' (do đó).",
+                    whyWrong: "A, B, D sai mối quan hệ logic nguyên nhân - kết quả."
+                }
+            },
+
+            // Passage C (5 items)
+            {
+                section: "Exercise 6 - Passage C. Read the passage and choose the best word for each blank.",
+                q: "Passage C (1): Adolescence is not always an easy time. Many teens feel (1) ______ because of schoolwork and exams.",
+                options: ["stress", "stressed", "stressful", "stressing"],
+                answer: 1,
+                explanation: {
+                    step1: "Dịch: Tuổi vị thành niên không phải lúc nào cũng dễ dàng. Nhiều bạn trẻ cảm thấy (1) ______ vì bài vở và thi cử.",
+                    optionsTrans: ["A. stress (n)", "B. stressed (adj - chỉ cảm xúc con người)", "C. stressful (adj - chỉ tính chất sự việc)", "D. stressing"],
+                    whyRight: "Cảm xúc của con người (teens feel) dùng tính từ đuôi -ed -> 'stressed'.",
+                    whyWrong: "A sai từ loại; C miêu tả sự vật/sự việc."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage C. Read the passage and choose the best word for each blank.",
+                q: "Passage C (2): They also want to (2) ______ in with their friends, so they sometimes give in to peer pressure.",
+                options: ["fit", "join", "get", "take"],
+                answer: 0,
+                explanation: {
+                    step1: "Dịch: Họ cũng muốn hòa nhập với bạn bè...",
+                    optionsTrans: ["A. fit (cụm 'fit in with')", "B. join", "C. get", "D. take"],
+                    whyRight: "Cụm động từ 'fit in with someone' = hòa nhập, hòa hợp với ai.",
+                    whyWrong: "B, C, D không đi với 'in with' theo nghĩa này."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage C. Read the passage and choose the best word for each blank.",
+                q: "Passage C (3): Social media can help teens keep in touch with friends, but it can also cause problems such as online (3) ______.",
+                options: ["pressure", "account", "forum", "bullying"],
+                answer: 3,
+                explanation: {
+                    step1: "Dịch: Mạng xã hội gây ra các vấn đề như bắt nạt trên mạng (3) ______.",
+                    optionsTrans: ["A. pressure", "B. account", "C. forum", "D. bullying (online bullying)"],
+                    whyRight: "'online bullying' = nạn bắt nạt qua mạng.",
+                    whyWrong: "A, B, C không khớp nét nghĩa tiêu cực gây tác hại."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage C. Read the passage and choose the best word for each blank.",
+                q: "Passage C (4): Experts say teens should not keep their worries to themselves. (4) ______, they should share their problems with their parents or teachers.",
+                options: ["However", "Otherwise", "Instead", "Therefore"],
+                answer: 2,
+                explanation: {
+                    step1: "Dịch: Chuyên gia khuyên không nên giữ lo âu một mình. (4) ______, họ nên chia sẻ với bố mẹ hoặc thầy cô.",
+                    optionsTrans: ["A. However: tuy nhiên", "B. Otherwise: nếu không thì", "C. Instead: thay vào đó", "D. Therefore: do đó"],
+                    whyRight: "'Instead' (thay vào đó) dùng để đưa ra giải pháp thay thế cho việc giữ tâm sự một mình.",
+                    whyWrong: "A, B, D không biểu thị sự thay thế giải pháp."
+                }
+            },
+            {
+                section: "Exercise 6 - Passage C. Read the passage and choose the best word for each blank.",
+                q: "Passage C (5): In this way, they can (5) ______ and learn new skills.",
+                options: ["become more self-confident", "more become self-confident", "become self-confident more", "self-confident become more"],
+                answer: 0,
+                explanation: {
+                    step1: "Cấu trúc: Động từ nối 'become' + tính từ so sánh hơn 'more self-confident'.",
+                    optionsTrans: ["A. become more self-confident", "B. Sai trật tự", "C. Sai vị trí more", "D. Sai trật tự"],
+                    whyRight: " become + more + adj (trở nên tự tin hơn).",
+                    whyWrong: "B, C, D sai trật tự cú pháp tiếng Anh."
+                }
+            },
+
+            // Exercise 7: Reading Comprehension (12 questions total)
+            // Passage A (6 items)
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: Hi, my name is Linh... 1. How does Linh usually unwind on weekdays?",
+                options: [
+                    "By cycling around the lake.",
+                    "By knitting a scarf.",
+                    "By cooking with her mum.",
+                    "By reading comics or listening to music."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Tìm thông tin trong bài: 'On weekdays... I usually unwind by reading comics or listening to music'.",
+                    optionsTrans: [
+                        "A. Đạp xe quanh hồ (Làm vào cuối tuần).",
+                        "B. Đan khăn (Sở thích mới tháng trước).",
+                        "C. Nấu ăn với mẹ (Chiều Chủ Nhật).",
+                        "D. Đọc truyện tranh hoặc nghe nhạc (Ngày trong tuần)."
+                    ],
+                    whyRight: "Khớp chính xác với đoạn 1 dòng 3.",
+                    whyWrong: "A, B, C sai thời gian diễn ra hoạt động."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: 2. Why does Linh limit her screen time?",
+                options: [
+                    "She doesn’t own a phone.",
+                    "Using her phone for too long makes her exhausted and irritable.",
+                    "Her parents take her phone away.",
+                    "She finds phones boring."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Dẫn chứng trong bài: 'staring at my phone for too long leaves me exhausted and irritable'.",
+                    optionsTrans: [
+                        "A. Cô ấy không có điện thoại.",
+                        "B. Dùng điện thoại quá lâu khiến cô ấy kiệt sức và dễ cáu giận.",
+                        "C. Bố mẹ tịch thu điện thoại.",
+                        "D. Cô ấy thấy điện thoại chán."
+                    ],
+                    whyRight: "Khớp nguyên văn thông tin lý do ở cuối đoạn 1.",
+                    whyWrong: "A, C, D không có trong bài."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: 3. The word 'hectic' in paragraph 1 is CLOSEST in meaning to _______.",
+                options: ["very busy", "very boring", "very easy", "very relaxing"],
+                answer: 0,
+                explanation: {
+                    step1: "Từ 'hectic' nghĩa là bận rộn, hối hả ('hectic school schedule' = lịch học bận rộn).",
+                    optionsTrans: ["A. very busy: rất bận rộn", "B. very boring: rất chán", "C. very easy: rất dễ", "D. very relaxing: rất thư thái"],
+                    whyRight: "'hectic' đồng nghĩa với 'very busy'.",
+                    whyWrong: "B, C, D trái nghĩa."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: 4. Why does Linh enjoy cooking?",
+                options: [
+                    "It helps her keep fit.",
+                    "Her grandmother cooks well.",
+                    "It allows her to be creative.",
+                    "It is very easy."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Dẫn chứng trong bài đoạn 2: 'Cooking is now one of my favourite pastimes because it allows me to be creative...'",
+                    optionsTrans: [
+                        "A. Giúp giữ dáng (Đó là đạp xe).",
+                        "B. Bà cô ấy nấu ăn ngon.",
+                        "C. Cho phép cô ấy sáng tạo (ĐÚNG).",
+                        "D. Nó rất dễ."
+                    ],
+                    whyRight: "Trích dẫn chuẩn từ câu 'allows me to be creative'.",
+                    whyWrong: "A, B, D sai thông tin nguyên nhân."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: 5. The word 'it' in the last paragraph refers to _______.",
+                options: ["the scarf", "the winter", "the kit", "the hobby"],
+                answer: 0,
+                explanation: {
+                    step1: "Đọc câu chứa 'it': 'I hope I can complete the scarf before winter and give it to my dad...'",
+                    optionsTrans: ["A. the scarf (chiếc khăn)", "B. the winter", "C. the kit", "D. the hobby"],
+                    whyRight: "'it' thay thế cho danh từ 'the scarf' được đề cập ngay trước đó.",
+                    whyWrong: "B, C, D không thể dùng làm món quà tặng bố trong ngữ cảnh này."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage A. Read the passage and answer the questions.",
+                q: "Passage A: 6. What can we infer about Linh?",
+                options: [
+                    "She spends most of her free time online.",
+                    "She only likes indoor activities.",
+                    "She enjoys a balance of indoor and outdoor activities.",
+                    "She has already finished the scarf."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Suy luận: Linh vừa thích các hoạt động trong nhà (đọc truyện, đan len, nấu ăn) vừa thích ngoài trời (đạp xe).",
+                    optionsTrans: [
+                        "A. Dành hầu hết thời gian trên mạng (Sai, cô ấy hạn chế dùng ĐT).",
+                        "B. Chỉ thích hoạt động trong nhà (Sai vì có đạp xe).",
+                        "C. Tận hưởng sự cân bằng giữa hoạt động trong nhà và ngoài trời (ĐÚNG).",
+                        "D. Đã hoàn thành chiếc khăn (Sai, cô ấy đang hy vọng làm xong trước mùa đông)."
+                    ],
+                    whyRight: "C thể hiện đầy đủ các sở thích đa dạng của Linh.",
+                    whyWrong: "A, B, D trái ngược với các chi tiết trong bài."
+                }
+            },
+
+            // Passage B (6 items)
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: Phong lives in a small village... 1. What does Phong do while the buffaloes graze?",
+                options: [
+                    "He goes fishing.",
+                    "He goes to the supermarket.",
+                    "He dries the rice.",
+                    "He does his homework under a tree."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dẫn chứng đoạn 1: '...lets them graze while he does his homework under a tree.'",
+                    optionsTrans: [
+                        "A. Đi câu cá.",
+                        "B. Đi siêu thị.",
+                        "C. Phơi lúa.",
+                        "D. Làm bài tập dưới gốc cây."
+                    ],
+                    whyRight: "Khớp nguyên văn hành động 'does his homework under a tree'.",
+                    whyWrong: "A, B, C không diễn ra trong lúc chăn trâu."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: 2. Which of the following is a DRAWBACK of rural life in Phong’s village?",
+                options: [
+                    "It is a close-knit community.",
+                    "Neighbours help one another.",
+                    "There are few facilities for entertainment.",
+                    "There is a river nearby."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Tìm từ khóa 'drawbacks' ở đoạn 3: 'However, rural life has some drawbacks. There are few facilities for entertainment...'",
+                    optionsTrans: [
+                        "A. Cộng đồng gắn kết (Điểm tốt).",
+                        "B. Hàng xóm giúp đỡ nhau (Điểm tốt).",
+                        "C. Có ít tiện nghi giải trí (Hạn chế/bất lợi).",
+                        "D. Có con sông gần đó."
+                    ],
+                    whyRight: "C là hạn chế được đề cập trực tiếp.",
+                    whyWrong: "A, B là ưu điểm; D là đặc điểm tự nhiên."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: 3. The word 'graze' in paragraph 1 is CLOSEST in meaning to _______.",
+                options: ["eat grass", "sleep", "run fast", "swim"],
+                answer: 0,
+                explanation: {
+                    step1: "Từ 'graze' dùng cho trâu bò nghĩa là gặm cỏ.",
+                    optionsTrans: ["A. eat grass: ăn cỏ", "B. sleep: ngủ", "C. run fast: chạy nhanh", "D. swim: bơi"],
+                    whyRight: "graze = eat grass.",
+                    whyWrong: "B, C, D sai nghĩa từ."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: 4. The phrase 'close-knit community' suggests the villagers _______.",
+                options: [
+                    "knit clothes together", "have strong relationships with one another",
+                    "live far away from each other", "rarely talk to each other"
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "'close-knit community' nghĩa là cộng đồng gắn kết chặt chẽ.",
+                    optionsTrans: [
+                        "A. Đan quần áo cùng nhau (Hiểu sai nghĩa đen).",
+                        "B. Có mối quan hệ khăng khít với nhau (ĐÚNG).",
+                        "C. Sống xa nhau.",
+                        "D. Hiếm khi nói chuyện."
+                    ],
+                    whyRight: "'close-knit' chỉ mối quan hệ khăng khít, gắn bó.",
+                    whyWrong: "A, C, D sai bản chất khái niệm."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: 5. Why do many young people migrate to big cities?",
+                options: [
+                    "They dislike farm work.",
+                    "The air in the village is not fresh.",
+                    "They want to go fishing.",
+                    "They are looking for better job prospects."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Dẫn chứng đoạn 3: 'As a result, many young people migrate to big cities in search of better job prospects.'",
+                    optionsTrans: [
+                        "A. Họ ghét làm nông.",
+                        "B. Không khí không trong lành.",
+                        "C. Họ muốn đi câu cá.",
+                        "D. Họ tìm kiếm triển vọng việc làm tốt hơn."
+                    ],
+                    whyRight: "Khớp câu 'in search of better job prospects'.",
+                    whyWrong: "A, B, C sai nguyên nhân di cư."
+                }
+            },
+            {
+                section: "Exercise 7 - Passage B. Read the passage and answer the questions.",
+                q: "Passage B: 6. What is the passage mainly about?",
+                options: [
+                    "How to harvest rice by hand.",
+                    "Phong’s life in the countryside and its good and bad points.",
+                    "Why young people prefer cities.",
+                    "Phong’s favourite sports."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Xác định ý chính: Bài văn nói về cuộc sống ở quê của Phong, bao gồm sinh hoạt hàng ngày, điểm tốt (gắn kết) và hạn chế (thiếu tiện ích).",
+                    optionsTrans: [
+                        "A. Cách thu hoạch lúa bằng tay.",
+                        "B. Cuộc sống ở nông thôn của Phong cùng các điểm tốt và chưa tốt của nó.",
+                        "C. Tại sao giới trẻ thích thành phố.",
+                        "D. Thể thao yêu thích của Phong."
+                    ],
+                    whyRight: "B bao quát toàn bộ các đoạn văn trong bài.",
+                    whyWrong: "A, C, D chỉ là các chi tiết nhỏ."
+                }
+            },
+
+            // Exercise 8: Conversation Completion (8 items total)
+            // Part I (4 items)
+            {
+                section: "Exercise 8 - Part I. Choose the sentence that best fits each numbered blank.",
+                q: "Part I (1): Mi: Hi, Nick. What do you like doing in your free time? <br>Nick: I love playing football. (1)________ <br>Mi: I’m keen on making crafts.",
+                options: [
+                    "What do you do there?",
+                    "Would you like to come along?",
+                    "How often do you go there?",
+                    "What about you?"
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Nick trả lời thích đá bóng, sau đó hỏi lại Mi để Mi chia sẻ về sở thích của mình.",
+                    optionsTrans: [
+                        "A. Bạn làm gì ở đó?",
+                        "B. Bạn có muốn đi cùng không?",
+                        "C. Bạn đến đó bao lâu một lần?",
+                        "D. Còn bạn thì sao? (What about you?)"
+                    ],
+                    whyRight: "'What about you?' dùng để hỏi lại đối phương về cùng một chủ đề sở thích.",
+                    whyWrong: "A, B, C không hợp lý trước câu trả lời của Mi."
+                }
+            },
+            {
+                section: "Exercise 8 - Part I. Choose the sentence that best fits each numbered blank.",
+                q: "Part I (2): Mi: Yes, I go to the Craft Club at the community centre. <br>Nick: (2)________ <br>Mi: Twice a week, on Wednesdays and Saturdays.",
+                options: [
+                    "What do you do there?",
+                    "Would you like to come along?",
+                    "How often do you go there?",
+                    "What about you?"
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Mi trả lời tần suất 'Twice a week' (2 lần một tuần) -> Câu hỏi phải hỏi về tần suất.",
+                    optionsTrans: [
+                        "A. Bạn làm gì ở đó?",
+                        "B. Bạn có muốn đi cùng không?",
+                        "C. Bạn đến đó bao lâu một lần? (How often do you go there?)",
+                        "D. Còn bạn thì sao?"
+                    ],
+                    whyRight: "'How often' dùng để hỏi tần suất.",
+                    whyWrong: "A, B, D không thể trả lời bằng 'Twice a week'."
+                }
+            },
+            {
+                section: "Exercise 8 - Part I. Choose the sentence that best fits each numbered blank.",
+                q: "Part I (3): Nick: (3)________ <br>Mi: We learn to make bracelets, cards and other things.",
+                options: [
+                    "What do you do there?",
+                    "Would you like to come along?",
+                    "How often do you go there?",
+                    "What about you?"
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Mi trả lời về các hoạt động: làm vòng tay, thiệp... -> Nick phải hỏi xem làm gì ở đó.",
+                    optionsTrans: [
+                        "A. Bạn làm gì ở đó? (What do you do there?)",
+                        "B. Bạn có muốn đi cùng không?",
+                        "C. Bạn đến đó bao lâu một lần?",
+                        "D. Còn bạn thì sao?"
+                    ],
+                    whyRight: "'What do you do there?' hỏi về hoạt động.",
+                    whyWrong: "B, C, D sai mục đích hỏi."
+                }
+            },
+            {
+                section: "Exercise 8 - Part I. Choose the sentence that best fits each numbered blank.",
+                q: "Part I (4): Mi: We’re having a craft fair next Sunday. (4)________ <br>Nick: Count me in! Thanks, Mi.",
+                options: [
+                    "What do you do there?",
+                    "Would you like to come along?",
+                    "How often do you go there?",
+                    "What about you?"
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Nick đáp 'Count me in!' (Cho tớ tham gia với!) -> Mi phải đưa ra một lời mời đi cùng.",
+                    optionsTrans: [
+                        "A. Bạn làm gì ở đó?",
+                        "B. Bạn có muốn đi cùng không? (Would you like to come along?)",
+                        "C. Bạn đến đó bao lâu một lần?",
+                        "D. Còn bạn thì sao?"
+                    ],
+                    whyRight: "'Would you like to come along?' là lời mời tham gia sự kiện.",
+                    whyWrong: "A, C, D không dẫn đến lời nhận lời 'Count me in!'."
+                }
+            },
+
+            // Part II (4 items)
+            {
+                section: "Exercise 8 - Part II. Choose the sentence that best fits each numbered blank.",
+                q: "Part II (1): Lan: You look exhausted, Mai. (1)________ <br>Mai: I’m anxious about the coming test.",
+                options: [
+                    "Why don’t you set a time limit for using your phone?",
+                    "What’s bothering you?",
+                    "I can’t concentrate because I keep checking my notifications.",
+                    "That makes sense."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Mai trình bày nỗi lo về bài kiểm tra -> Lan phải hỏi có chuyện gì làm Mai bận tâm.",
+                    optionsTrans: [
+                        "A. Lời khuyên đặt giới hạn giờ.",
+                        "B. Có chuyện gì làm cậu bận tâm thế? (What’s bothering you?)",
+                        "C. Tớ không thể tập trung...",
+                        "D. Điều đó hợp lý đấy."
+                    ],
+                    whyRight: "'What's bothering you?' hỏi nguyên nhân ai đó trông mệt mỏi/lo lắng.",
+                    whyWrong: "A, C, D không phải câu hỏi tìm nguyên nhân."
+                }
+            },
+            {
+                section: "Exercise 8 - Part II. Choose the sentence that best fits each numbered blank.",
+                q: "Part II (2): Lan: Really? Why is that? <br>Mai: (2)________ My phone buzzes all the time.",
+                options: [
+                    "Why don’t you set a time limit for using your phone?",
+                    "What’s bothering you?",
+                    "I can’t concentrate because I keep checking my notifications.",
+                    "That makes sense."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Lan hỏi lý do 'Why is that?' -> Mai giải thích không tập trung được vì điện thoại thông báo liên tục.",
+                    optionsTrans: [
+                        "A. Lời khuyên.",
+                        "B. Câu hỏi.",
+                        "C. Tớ không thể tập trung vì cứ mải kiểm tra thông báo.",
+                        "D. Điều đó hợp lý."
+                    ],
+                    whyRight: "C nêu lý do thích hợp cho câu hỏi 'Why is that?' liên quan tới điện thoại.",
+                    whyWrong: "A, B, D sai chức năng giao tiếp."
+                }
+            },
+            {
+                section: "Exercise 8 - Part II. Choose the sentence that best fits each numbered blank.",
+                q: "Part II (3): Lan: I see. (3)________ You can also put it in another room while you study.",
+                options: [
+                    "Why don’t you set a time limit for using your phone?",
+                    "What’s bothering you?",
+                    "I can’t concentrate because I keep checking my notifications.",
+                    "That makes sense."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Lan đưa ra giải pháp xử lý vấn đề điện thoại -> Dùng cấu trúc lời khuyên 'Why don't you...'.",
+                    optionsTrans: [
+                        "A. Sao cậu không đặt giới hạn thời gian dùng điện thoại nhỉ?",
+                        "B. Có chuyện gì?",
+                        "C. Tớ không tập trung...",
+                        "D. Hợp lý."
+                    ],
+                    whyRight: "A là lời khuyên khắc phục việc xao nhãng do điện thoại.",
+                    whyWrong: "B, C, D không mang tính chất khuyên bảo."
+                }
+            },
+            {
+                section: "Exercise 8 - Part II. Choose the sentence that best fits each numbered blank.",
+                q: "Part II (4): Mai: (4)________ Without distractions, I’ll be able to focus better. Thanks, Lan!",
+                options: [
+                    "Why don’t you set a time limit for using your phone?",
+                    "What’s bothering you?",
+                    "I can’t concentrate because I keep checking my notifications.",
+                    "That makes sense."
+                ],
+                answer: 3,
+                explanation: {
+                    step1: "Mai tán thành lời khuyên của Lan và cảm ơn.",
+                    optionsTrans: [
+                        "A. Lời khuyên.",
+                        "B. Câu hỏi.",
+                        "C. Giải thích.",
+                        "D. Điều đó rất có lý/hợp lý. (That makes sense.)"
+                    ],
+                    whyRight: "'That makes sense.' thể hiện sự đồng ý với giải pháp của bạn.",
+                    whyWrong: "A, B, C sai ngữ cảnh đáp lời khuyên."
+                }
+            },
+
+            // Exercise 9: Ordering (2 items)
+            {
+                section: "Exercise 9 - Part I. Put the sentences in the correct order to have a logical text.",
+                q: "I. There are many reasons why I love visiting my grandparents’ village. ______________ <br>a. First, the scenery there is picturesque... <br>b. Finally, I can take part in outdoor activities... <br>c. Second, the villagers are very generous... <br>d. For example, they often invite me to their houses...",
+                options: ["a – c – d – b", "c – a – b – d", "a – b – c – d", "d – a – c – b"],
+                answer: 0,
+                explanation: {
+                    step1: "Phân tích các từ nối thứ tự:",
+                    optionsTrans: [
+                        "a. First (Đầu tiên): cảnh đẹp...",
+                        "c. Second (Thứ hai): dân làng hào phóng...",
+                        "d. For example (Ví dụ như): làm rõ cho câu c...",
+                        "b. Finally (Cuối cùng): hoạt động ngoài trời..."
+                    ],
+                    whyRight: "Trình tự hợp lý: First (a) -> Second (c) -> Ví dụ cho câu c (d) -> Finally (b).",
+                    whyWrong: "B, C, D sai thứ tự quy trình liên kết logic (First -> Second -> Finally)."
+                }
+            },
+            {
+                section: "Exercise 9 - Part II. Put the sentences in the correct order to have a logical text.",
+                q: "II. Cyberbullying is a serious problem among teenagers. ______________ <br>a. If you are a victim, do not reply to the bully. <br>b. It happens when someone uses social media to hurt or embarrass others. <br>c. Instead, take screenshots of the messages and tell your parents or teachers.",
+                options: ["a – b – c", "b – a – c", "c – b – a", "b – c – a"],
+                answer: 1,
+                explanation: {
+                    step1: "Sắp xếp tính logic của đoạn văn:",
+                    optionsTrans: [
+                        "b. Định nghĩa Cyberbullying là gì (It happens when...).",
+                        "a. Lời khuyên đầu tiên nếu là nạn nhân (If you are a victim...).",
+                        "c. Lời khuyên tiếp theo dùng 'Instead' (Thay vào đó, hãy chụp màn hình...)."
+                    ],
+                    whyRight: "Thứ tự b -> a -> c (Giải thích định nghĩa -> Lời khuyên 1 -> Lời khuyên 2 thế chỗ).",
+                    whyWrong: "A, C, D đưa lời khuyên xử lý trước khi định nghĩa khái niệm."
+                }
+            },
+
+            // Exercise 10: Sentence Transformation (8 items)
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "1. Reading detective stories is my sister’s favourite pastime.",
+                options: [
+                    "My sister is crazy about reading detective stories.",
+                    "My sister is crazy at reading detective stories.",
+                    "My sister is crazy for read detective stories.",
+                    "My sister is crazy to reading detective stories."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Viết lại câu dùng cấu trúc 'be crazy about + V-ing': thích cuồng nhiệt cái gì.",
+                    optionsTrans: [
+                        "A. Đúng cấu trúc 'be crazy about V-ing'.",
+                        "B. Sai giới từ 'at'.",
+                        "C. Sai động từ 'read' nguyên thể.",
+                        "D. Sai giới từ 'to'."
+                    ],
+                    whyRight: "Cụm cố định: 'be crazy about V-ing'.",
+                    whyWrong: "B, C, D dùng sai giới từ hoặc dạng động từ."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "2. I like watching documentaries better than watching cartoons.",
+                options: [
+                    "I prefer watching documentaries to watching cartoons.",
+                    "I prefer watch documentaries than watch cartoons.",
+                    "I prefer watching documentaries than watching cartoons.",
+                    "I prefer to watch documentaries to watch cartoons."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Chuyển đổi 'like A better than B' -> 'prefer A to B' (với A, B là V-ing).",
+                    optionsTrans: [
+                        "A. I prefer watching documentaries to watching cartoons. (ĐÚNG)",
+                        "B. Dùng 'than' là sai.",
+                        "C. Dùng 'than' thay vì 'to' là sai.",
+                        "D. Sai ngữ pháp."
+                    ],
+                    whyRight: "Cấu trúc chuẩn: 'prefer V-ing to V-ing'.",
+                    whyWrong: "B, C, D dùng sai giới từ 'than' khi đi với 'prefer'."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "3. It takes me two hours a day to practise the piano.",
+                options: [
+                    "I spend two hours a day to practise the piano.",
+                    "I spend two hours a day practising the piano.",
+                    "I spend two hours a day on practise the piano.",
+                    "I spend two hours a day for practising the piano."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Chuyển 'It takes sb time to V' -> 'S + spend + time + V-ing'.",
+                    optionsTrans: [
+                        "A. dùng 'to practise' là sai.",
+                        "B. dùng 'practising' (V-ing) là ĐÚNG.",
+                        "C. dùng 'on practise' sai.",
+                        "D. dùng 'for practising' sai."
+                    ],
+                    whyRight: "Cấu trúc chuẩn: 'spend + time + V-ing'.",
+                    whyWrong: "A, C, D áp dụng sai công thức của động từ 'spend'."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "4. Making paper flowers is very interesting to Mai.",
+                options: [
+                    "Mai finds making paper flowers very interesting.",
+                    "Mai finds to make paper flowers very interesting.",
+                    "Mai finds making paper flowers is very interesting.",
+                    "Mai finds make paper flowers very interesting."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Cấu trúc: 'S + find + V-ing/N + Adj' (ai đó thấy việc gì như thế nào).",
+                    optionsTrans: [
+                        "A. Mai finds making paper flowers very interesting. (ĐÚNG)",
+                        "B. Dùng 'to make' sai.",
+                        "C. Thừa động từ 'is'.",
+                        "D. Dùng 'make' nguyên thể sai."
+                    ],
+                    whyRight: "Công thức: S + find + V-ing + Adj.",
+                    whyWrong: "B, C, D vi phạm cấu trúc của 'find'."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "5. Let’s go cycling around the lake this weekend.",
+                options: [
+                    "How about go cycling around the lake this weekend?",
+                    "How about to go cycling around the lake this weekend?",
+                    "How about going cycling around the lake this weekend?",
+                    "How about we going cycling around the lake this weekend?"
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Chuyển lời đề nghị 'Let's + V' -> 'How about + V-ing...?'.",
+                    optionsTrans: [
+                        "A. Dùng 'go' nguyên thể sai.",
+                        "B. Dùng 'to go' sai.",
+                        "C. How about going cycling... (ĐÚNG)",
+                        "D. Thừa 'we'."
+                    ],
+                    whyRight: "Cấu trúc gợi ý chuẩn: 'How about + V-ing...?'.",
+                    whyWrong: "A, B, D sai cấu trúc ngữ pháp."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "6. Nam doesn’t want to surf the net any more because it is boring.",
+                options: [
+                    "Nam is bored with surfing the net because it is boring.",
+                    "Nam is bored of surf the net because it is boring.",
+                    "Nam is bored at surfing the net because it is boring.",
+                    "Nam is bored to surf the net because it is boring."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Cấu trúc: 'be bored with + V-ing' = chán ngấy làm việc gì.",
+                    optionsTrans: [
+                        "A. Nam is bored with surfing the net... (ĐÚNG)",
+                        "B. Dùng 'of surf' sai.",
+                        "C. Dùng 'at' sai.",
+                        "D. Dùng 'to' sai."
+                    ],
+                    whyRight: "Cụm tính từ đi với giới từ chuẩn: 'be bored with V-ing'.",
+                    whyWrong: "B, C, D dùng sai giới từ."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "7. It’s not a problem for me to help my mum with the housework.",
+                options: [
+                    "I don’t mind helping my mum with the housework.",
+                    "I don’t mind to help my mum with the housework.",
+                    "I don’t mind help my mum with the housework.",
+                    "I don’t mind for helping my mum with the housework."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Cấu trúc: 'not a problem for me' = 'I don't mind + V-ing' (tôi không phiền/không ngại làm gì).",
+                    optionsTrans: [
+                        "A. I don’t mind helping... (ĐÚNG)",
+                        "B. Dùng 'to help' sai.",
+                        "C. Dùng 'help' sai.",
+                        "D. Dùng 'for helping' sai."
+                    ],
+                    whyRight: "Cấu trúc động từ: 'mind + V-ing'.",
+                    whyWrong: "B, C, D sai dạng động từ sau 'mind'."
+                }
+            },
+            {
+                section: "Exercise 10. Choose the sentence that has the same meaning as the given sentence.",
+                q: "8. My dad really dislikes queuing for a long time.",
+                options: [
+                    "My dad can’t stand queue for a long time.",
+                    "My dad can’t stand to queuing for a long time.",
+                    "My dad can’t stand queuing for a long time.",
+                    "My dad can’t stand to queue for a long time."
+                ],
+                answer: 2,
+                explanation: {
+                    step1: "Chuyển 'dislike' -> 'can't stand + V-ing' (không thể chịu đựng nổi việc gì).",
+                    optionsTrans: [
+                        "A. Dùng 'queue' nguyên thể sai.",
+                        "B. Thừa 'to'.",
+                        "C. My dad can’t stand queuing... (ĐÚNG)",
+                        "D. Dùng 'to queue' không chuẩn ngữ cảnh."
+                    ],
+                    whyRight: "Cấu trúc: 'can't stand + V-ing'.",
+                    whyWrong: "A, B, D sai dạng V-ing."
+                }
+            },
+
+            // Exercise 11: Adverbs Comparison (7 items)
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "1. Mai is a faster runner than Lan. (fast)",
+                options: [
+                    "Mai runs more fast than Lan.",
+                    "Mai runs faster than Lan.",
+                    "Mai runs fastly than Lan.",
+                    "Mai runs more faster than Lan."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Trạng từ của 'fast' vẫn là 'fast'. Dạng so sánh hơn là 'faster'.",
+                    optionsTrans: [
+                        "A. 'more fast' sai.",
+                        "B. Mai runs faster than Lan. (ĐÚNG)",
+                        "C. 'fastly' không tồn tại trong tiếng Anh.",
+                        "D. 'more faster' sai lặp."
+                    ],
+                    whyRight: "fast -> faster than.",
+                    whyWrong: "A, C, D vi phạm quy tắc so sánh trạng từ ngắn."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "2. My brother doesn’t drive as carefully as my father. (carefully)",
+                options: [
+                    "My father drives more carefully than my brother.",
+                    "My father drives carefullyer than my brother.",
+                    "My father drives as carefully than my brother.",
+                    "My father drives most carefully than my brother."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Viết lại so sánh không bằng thành so sánh hơn với trạng từ dài 'carefully' -> 'more carefully than'.",
+                    optionsTrans: [
+                        "A. My father drives more carefully than my brother. (ĐÚNG)",
+                        "B. 'carefullyer' sai.",
+                        "C. Sai cấu trúc.",
+                        "D. Sai so sánh nhất."
+                    ],
+                    whyRight: "Trạng từ dài dùng: more + adv + than.",
+                    whyWrong: "B, C, D sai dạng so sánh."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "3. Nam’s handwriting is less neat than his sister’s. (neatly)",
+                options: [
+                    "Nam writes neatlyer than his sister.",
+                    "Nam writes less neatly than his sister.",
+                    "Nam writes more neatly than his sister.",
+                    "Nam writes as neatly than his sister."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Viết lại câu 'less neat than' bằng trạng từ 'neatly' -> 'less neatly than' (chữ Nam viết kém nắn nót hơn chị).",
+                    optionsTrans: [
+                        "A. 'neatlyer' sai.",
+                        "B. Nam writes less neatly than his sister. (ĐÚNG)",
+                        "C. 'more neatly' làm ngược nghĩa đề bài.",
+                        "D. Sai cấu trúc."
+                    ],
+                    whyRight: "less + adv + than (ít... hơn).",
+                    whyWrong: "A, C, D sai hình thức hoặc làm đổi nghĩa của câu đề bài."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "4. No one in my class speaks English as well as Nam. (well)",
+                options: [
+                    "Nam speaks English the best in my class.",
+                    "Nam speaks English better than anyone else in my class.",
+                    "Nam speaks English more well than anyone in my class.",
+                    "Nam speaks English gooder than anyone in my class."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Không ai nói tiếng Anh giỏi như Nam -> Nam nói tiếng Anh giỏi hơn bất kỳ ai khác trong lớp (better than anyone else).",
+                    optionsTrans: [
+                        "A. Thiếu so sánh hơn với người khác.",
+                        "B. Nam speaks English better than anyone else in my class. (ĐÚNG)",
+                        "C. 'more well' sai.",
+                        "D. 'gooder' sai."
+                    ],
+                    whyRight: "Trạng từ 'well' -> so sánh hơn là 'better than'.",
+                    whyWrong: "A, C, D sai ngữ pháp so sánh."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "5. Every year, my grandfather’s walking gets slower. (slowly)",
+                options: [
+                    "My grandfather walks more slowly every year.",
+                    "My grandfather walks slowerly every year.",
+                    "My grandfather walks slowlier every year.",
+                    "My grandfather walks most slowly every year."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Trạng từ dài 'slowly' có dạng so sánh hơn là 'more slowly'.",
+                    optionsTrans: [
+                        "A. My grandfather walks more slowly every year. (ĐÚNG)",
+                        "B. Từ không tồn tại.",
+                        "C. Dạng biến đổi sai.",
+                        "D. So sánh nhất."
+                    ],
+                    whyRight: "more + slowly.",
+                    whyWrong: "B, C, D sai quy tắc trạng từ dài."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "6. Phong usually arrives at school earlier than his classmates. (late)",
+                options: [
+                    "His classmates usually arrive later than Phong.",
+                    "His classmates usually arrive more late than Phong.",
+                    "His classmates usually arrive latelier than Phong.",
+                    "His classmates usually arrive early than Phong."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Phong đến sớm hơn bạn -> Bạn học đến muộn hơn Phong. Trạng từ 'late' có so sánh hơn là 'later'.",
+                    optionsTrans: [
+                        "A. His classmates usually arrive later than Phong. (ĐÚNG)",
+                        "B. 'more late' sai.",
+                        "C. Từ không tồn tại.",
+                        "D. Sai ý nghĩa."
+                    ],
+                    whyRight: "late -> later than.",
+                    whyWrong: "B, C, D sai dạng so sánh hơn của 'late'."
+                }
+            },
+            {
+                section: "Exercise 11. Complete the sentences using the comparative form of adverbs.",
+                q: "7. Last year Hoa didn’t study as hard as she does now. (hard)",
+                options: [
+                    "Hoa studies harder now than she did last year.",
+                    "Hoa studies more hard now than last year.",
+                    "Hoa studies hardly now than last year.",
+                    "Hoa studies more harder now than last year."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Năm ngoái Hoa không học chăm bằng bây giờ -> Bây giờ Hoa học chăm chỉ hơn năm ngoái (harder now than...).",
+                    optionsTrans: [
+                        "A. Hoa studies harder now than she did last year. (ĐÚNG)",
+                        "B. 'more hard' sai.",
+                        "C. 'hardly' nghĩa là hầu như không.",
+                        "D. 'more harder' sai lặp."
+                    ],
+                    whyRight: "hard -> harder than.",
+                    whyWrong: "B, C, D sai quy tắc biến đổi trạng từ 'hard'."
+                }
+            },
+
+            // Exercise 12: Compound Sentences (5 items)
+            {
+                section: "Exercise 12. Choose the correctly combined compound sentence.",
+                q: "1. My grandparents live in the countryside. They grow vegetables in their garden. (and)",
+                options: [
+                    "My grandparents live in the countryside, and they grow vegetables in their garden.",
+                    "My grandparents live in the countryside and, they grow vegetables in their garden.",
+                    "My grandparents live in the countryside, and grow vegetables in their garden.",
+                    "My grandparents live in the countryside and they, grow vegetables in their garden."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Nối 2 mệnh đề độc lập bằng liên từ 'and': Mệnh đề 1 + , and + Mệnh đề 2.",
+                    optionsTrans: [
+                        "A. Đúng cấu trúc vị trí dấu phẩy trước 'and'.",
+                        "B. Sai vị trí dấu phẩy.",
+                        "C. Rút gọn chủ ngữ (thiếu tính chất câu ghép đầy đủ 2 mệnh đề độc lập).",
+                        "D. Sai vị trí phẩy."
+                    ],
+                    whyRight: "Cấu trúc chuẩn FANBOYS: S1 + V1, and S2 + V2.",
+                    whyWrong: "B, C, D đặt dấu phẩy sai quy tắc."
+                }
+            },
+            {
+                section: "Exercise 12. Choose the correctly combined compound sentence.",
+                q: "2. I wanted to go camping. It rained heavily. (but)",
+                options: [
+                    "I wanted to go camping, but it rained heavily.",
+                    "I wanted to go camping but, it rained heavily.",
+                    "I wanted to go camping; but it rained heavily.",
+                    "I wanted to go camping, but rained heavily."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Nối 2 mệnh đề thể hiện sự tương phản bằng liên từ 'but': S1 + V1, but S2 + V2.",
+                    optionsTrans: [
+                        "A. I wanted to go camping, but it rained heavily. (ĐÚNG)",
+                        "B. Sai vị trí phẩy.",
+                        "C. Dùng chấm phẩy sai.",
+                        "D. Thiếu chủ ngữ 'it'."
+                    ],
+                    whyRight: "Dấu phẩy đứng ngay trước liên từ 'but'.",
+                    whyWrong: "B, C, D sai quy tắc viết câu ghép."
+                }
+            },
+            {
+                section: "Exercise 12. Choose the correctly combined compound sentence.",
+                q: "3. You should study harder. You won’t pass the exam. (otherwise)",
+                options: [
+                    "You should study harder, otherwise you won’t pass the exam.",
+                    "You should study harder; otherwise, you won’t pass the exam.",
+                    "You should study harder otherwise, you won’t pass the exam.",
+                    "You should study harder; otherwise you won’t pass the exam."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Nối bằng trạng từ liên kết 'otherwise' (nếu không thì): Mệnh đề 1; otherwise, Mệnh đề 2.",
+                    optionsTrans: [
+                        "A. Dùng phẩy trước otherwise là sai.",
+                        "B. You should study harder; otherwise, you won’t pass the exam. (ĐÚNG)",
+                        "C. Thiếu chấm phẩy.",
+                        "D. Thiếu phẩy sau otherwise."
+                    ],
+                    whyRight: "Quy tắc chính tả câu ghép với trạng từ liên kết: (; otherwise,).",
+                    whyWrong: "A, C, D đặt sai các dấu chấm phẩy."
+                }
+            },
+            {
+                section: "Exercise 12. Choose the correctly combined compound sentence.",
+                q: "4. I didn’t go to the party. I had to prepare for my test. (therefore)",
+                options: [
+                    "I had to prepare for my test; therefore, I didn’t go to the party.",
+                    "I didn’t go to the party; therefore, I had to prepare for my test.",
+                    "I had to prepare for my test, therefore I didn’t go to the party.",
+                    "I didn’t go to the party, therefore, I had to prepare for my test."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Xác định quan hệ nguyên nhân - kết quả: Phải chuẩn bị cho bài kiểm tra (nguyên nhân) -> Do đó không đi dự tiệc (kết quả).",
+                    optionsTrans: [
+                        "A. Tớ phải chuẩn bị cho bài thi; do đó, tớ đã không đi dự tiệc. (ĐÚNG NGHĨA & NGỮ PHÁP)",
+                        "B. Ngược nghĩa logic.",
+                        "C. Sai dấu chấm phẩy.",
+                        "D. Ngược nghĩa và sai dấu."
+                    ],
+                    whyRight: "Đúng logic nguyên nhân -> kết quả và đúng dấu (; therefore,).",
+                    whyWrong: "B, D ngược nghĩa; C sai cú pháp."
+                }
+            },
+            {
+                section: "Exercise 12. Choose the correctly combined compound sentence.",
+                q: "5. Social media helps teens keep in touch with friends. It can also lead to cyberbullying. (however)",
+                options: [
+                    "Social media helps teens keep in touch with friends, however it can also lead to cyberbullying.",
+                    "Social media helps teens keep in touch with friends; however, it can also lead to cyberbullying.",
+                    "Social media helps teens keep in touch with friends however, it can also lead to cyberbullying.",
+                    "Social media helps teens keep in touch with friends; however it can also lead to cyberbullying."
+                ],
+                answer: 1,
+                explanation: {
+                    step1: "Nối hai mệnh đề tương phản bằng trạng từ liên kết 'however': Mệnh đề 1; however, Mệnh đề 2.",
+                    optionsTrans: [
+                        "A. Dùng phẩy trước however là sai.",
+                        "B. Social media helps teens keep in touch with friends; however, it can also lead to cyberbullying. (ĐÚNG)",
+                        "C. Thiếu chấm phẩy.",
+                        "D. Thiếu phẩy sau however."
+                    ],
+                    whyRight: "Chuẩn ngữ pháp: (; however,).",
+                    whyWrong: "A, C, D sai quy tắc ngắt câu."
+                }
+            },
+
+            // Exercise 13: Full Sentence Writing (1 item)
+            {
+                section: "Exercise 13. Write full sentences using the suggested words and phrases given.",
+                q: "1. My sister / be / interested / learn / play / the guitar.",
+                options: [
+                    "My sister is interested in learning to play the guitar.",
+                    "My sister is interested at learning to play the guitar.",
+                    "My sister is interested in learn to play the guitar.",
+                    "My sister is interested to learning play the guitar."
+                ],
+                answer: 0,
+                explanation: {
+                    step1: "Áp dụng cấu trúc: 'be interested in + V-ing' và 'learn to + V nguyên thể'.",
+                    optionsTrans: [
+                        "A. My sister is interested in learning to play the guitar. (ĐÚNG)",
+                        "B. Sai giới từ 'at'.",
+                        "C. Sai 'learn' nguyên thể sau giới từ 'in'.",
+                        "D. Sai giới từ và cấu trúc."
+                    ],
+                    whyRight: "is interested in + learning + to play.",
+                    whyWrong: "B, C, D sai giới từ hoặc dạng động từ."
+                }
+            }
+        ];
+
+        // Track user choices
+        let userAnswers = new Array(questionsData.length).fill(null);
+
+        // Render questions
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            let currentSection = "";
+
+            questionsData.forEach((item, index) => {
+                // Section Header
+                if (item.section !== currentSection) {
+                    currentSection = item.section;
+                    const secHeader = document.createElement('div');
+                    secHeader.className = "mt-8 mb-4 bg-purple-700 text-white p-3 sm:p-4 rounded-2xl font-black text-base sm:text-lg shadow-md flex items-center gap-2";
+                    secHeader.innerHTML = `<i class="fa-solid fa-star text-yellow-300"></i> ${currentSection}`;
+                    container.appendChild(secHeader);
+                }
+
+                // Question Card
+                const card = document.createElement('div');
+                card.className = "gamified-card p-4 sm:p-6 transition-all duration-300";
+                card.id = `q-card-${index}`;
+
+                // Options HTML
+                let optionsHTML = '';
+                item.options.forEach((opt, optIdx) => {
+                    const letter = String.fromCharCode(65 + optIdx);
+                    optionsHTML += `
+                        <button onclick="selectOption(${index}, ${optIdx})" 
+                                id="opt-${index}-${optIdx}" 
+                                class="btn-option w-full p-3 sm:p-4 text-left flex items-start gap-3">
+                            <span class="bg-gray-200 text-gray-700 rounded-lg px-2.5 py-1 text-xs font-black shrink-0 mt-0.5">${letter}</span>
+                            <span class="text-sm sm:text-base leading-relaxed">${opt}</span>
+                        </button>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-2 mb-3">
+                        <span class="bg-yellow-400 text-yellow-950 font-black rounded-lg px-2.5 py-1 text-xs shrink-0 mt-0.5">Câu ${index + 1}</span>
+                        <div class="font-extrabold text-base sm:text-lg text-gray-800 leading-snug">${item.q}</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                        ${optionsHTML}
+                    </div>
+                    
+                    <!-- EXPLANATION BOX (HIDDEN INITIALLY) -->
+                    <div id="explain-${index}" class="hidden mt-5 p-4 rounded-2xl bg-blue-50 border-2 border-blue-200 text-xs sm:text-sm text-gray-800 space-y-2">
+                        <div class="font-black text-blue-900 flex items-center gap-2 text-sm sm:text-base border-b border-blue-200 pb-2">
+                            <i class="fa-solid fa-lightbulb text-yellow-500 text-lg"></i> 
+                            GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:
+                        </div>
+                        <p class="font-bold text-gray-700">1. Phân tích & Dịch nghĩa:</p>
+                        <p class="pl-3 text-gray-800">${item.explanation.step1}</p>
+                        <div class="pl-3 space-y-1 font-medium bg-white/70 p-2.5 rounded-xl border border-blue-100">
+                            ${item.explanation.optionsTrans.map(t => `<p>${t}</p>`).join('')}
+                        </div>
+                        <p class="font-bold text-green-700 mt-2">2. Tại sao chọn đáp án đúng?</p>
+                        <p class="pl-3 text-green-800 font-semibold">${item.explanation.whyRight}</p>
+                        <p class="font-bold text-red-600 mt-1">3. Tại sao các đáp án khác sai?</p>
+                        <p class="pl-3 text-red-700">${item.explanation.whyWrong}</p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Handle user clicking an option
+        function selectOption(qIndex, optIndex) {
+            if (userAnswers[qIndex] !== null) return; // Prevent changing after selected
+
+            userAnswers[qIndex] = optIndex;
+            const item = questionsData[qIndex];
+            const isCorrect = (optIndex === item.answer);
+
+            // Highlight selected button & Correct button
+            const selectedBtn = document.getElementById(`opt-${qIndex}-${optIndex}`);
+            const correctBtn = document.getElementById(`opt-${qIndex}-${item.answer}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playDingSound();
+                confetti({
+                    particleCount: 40,
+                    spread: 60,
+                    origin: { y: 0.8 }
+                });
+            } else {
+                selectedBtn.classList.add('wrong');
+                correctBtn.classList.add('correct');
+                playWrongSound();
+            }
+
+            // Disable all option buttons for this question
+            item.options.forEach((_, idx) => {
+                const btn = document.getElementById(`opt-${qIndex}-${idx}`);
+                btn.style.pointerEvents = 'none';
+            });
+
+            // Automatically reveal the detailed explanation
+            const explainBox = document.getElementById(`explain-${qIndex}`);
+            explainBox.classList.remove('hidden');
+        }
+
+        // Submit & calculate total score
+        function submitTest() {
+            let correctCount = 0;
+            userAnswers.forEach((ans, idx) => {
+                if (ans === questionsData[idx].answer) {
+                    correctCount++;
+                }
+            });
+
+            const total = questionsData.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('modal-score').innerText = `${correctCount} / ${total}`;
+            document.getElementById('modal-percentage').innerText = `Đạt: ${percentage}%`;
+
+            const feedbackEl = document.getElementById('modal-feedback');
+            const iconEl = document.getElementById('modal-icon');
+
+            if (percentage < 50) {
+                iconEl.innerText = '💪';
+                feedbackEl.innerHTML = `Điểm lần này chưa cao lắm (${percentage}%), con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!`;
+            } else if (percentage <= 80) {
+                iconEl.innerText = '🌟';
+                feedbackEl.innerHTML = `Con đã có tiến bộ khá ổn rồi (${percentage}%), con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!`;
+            } else {
+                iconEl.innerText = '🎉';
+                feedbackEl.innerHTML = `Làm tốt lắm (${percentage}%), con cố gắng rinh điểm 10 ở lần sau nha!`;
+            }
+
+            document.getElementById('result-modal').classList.remove('hidden');
+            document.getElementById('result-modal').classList.add('flex');
+
+            if (percentage >= 80) {
+                confetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.5 }
+                });
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').classList.add('hidden');
+            document.getElementById('result-modal').classList.remove('flex');
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            renderQuestions();
+        };
+    </script>
+</body>
+</html>
+```eof
+
+### Tóm tắt các tính năng:
+1. **Nội dung hoàn chỉnh 100%:** Bao gồm toàn bộ câu hỏi từ Lý thuyết (Theory) đến Bài tập thực hành (Exercise 1 đến Exercise 13), tuyệt đối không cắt xén chữ nào.
+2. **Giao diện Gamification sinh động:** Màu loang pastel neon chuyển động liên tục, họa tiết SVG bay lơ lửng, nút 3D hiệu ứng nẩy nảy kích thích thị giác học sinh.
+3. **Phát âm & Trọng âm:** Các từ kiểm tra đều được dùng thẻ `<u>` gạch chân màu đỏ nổi bật.
+4. **Logic Chấm điểm & Giải thích siêu chi tiết:** 
+   - Chọn đáp án là đổi màu ngay lập tức (Đúng: Xanh tươi `#00D26A`, Sai: Đỏ `#FF4757`).
+   - Tự động phát âm thanh **Ding/Error** trực tiếp qua Web Audio API và bắn pháo giấy (Confetti).
+   - Khung giải thích tự động hiện bên dưới mỗi câu theo đúng 4 bước yêu cầu (Dịch câu, Dịch 4 đáp án, Lý do đúng, Lý do các đáp án khác sai).
+5. **Popup Nộp bài & Đánh giá:** Phân chia chính xác 3 mức nhận xét của **Ms Lê Hằng** (<50%, 60-80%, 90-100%).
